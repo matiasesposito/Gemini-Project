@@ -29,7 +29,7 @@ import {
       generationConfig // Optional
     });
 
-    let pregunta = `¿Como funciona el calculo_embargos?`;
+    let pregunta = `¿Como funciona el Ajuste a Mínima y Máxima?`;
 
     const prompt = `A partir del siguiente texto: ${textoPDF}, necesito que me 
                     contestes la siguiente pregunta: ${pregunta}`;
