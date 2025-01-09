@@ -10,9 +10,9 @@
 
 <style>
   .blinking-cursor {
-  margin-left: 5px;
-  background-color: #fff;
-  animation: blink 1s infinite;
+    margin-left: 5px;
+    background-color: #fff;
+    animation: blink 1s infinite;
   }
 
   @keyframes blink {
@@ -25,12 +25,12 @@
   }
 
   pre {
-  white-space: pre-wrap;       /* css-3 */
-  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
-  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    font-family: "Helvetica", Helvetica, Arial, sans-serif;
   }
 </style>
 
