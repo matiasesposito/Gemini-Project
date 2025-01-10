@@ -8,6 +8,10 @@ var textSrc=[
   {
     src: "documentos/Documentación_Sist_Liq.docx",
     type: "docx"
+  },
+  {
+    src: "documentos/Presentación_de_Novedades_de_Terceros.doc",
+    type: "doc"
   }
 ]
 
@@ -52,7 +56,7 @@ async function run() {
     generationConfig // Optional
   });
 
-  let pregunta = `¿Que hace la ventana de Asignación Familiar?`;
+  let pregunta = `¿Como funciona las Novedades de Terceros?`;
 
   const prompt = `A partir del siguiente texto: ${textoSource}, necesito que me 
                     contestes la siguiente pregunta: ${pregunta}`;

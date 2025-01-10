@@ -16,8 +16,8 @@ function typeWriter(text, idElement) {
   function type() {
     if (index < text.length) {
       //typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
-      letter = eliminarAcentos(text.slice(index - 1, index));
-      iblize.insertText(text.length, text.slice(index - 1, index));
+      text_format = eliminarAcentos(text.slice(index - 1, index));
+      iblize.insertText(text.length, text_format);
       index++;
       setTimeout(type, Math.random() * 15);
     } else {
