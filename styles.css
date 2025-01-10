@@ -1,3 +1,7 @@
+body{
+  background: #222639;
+}
+
 .group {
     display: flex;
     line-height: 16px;

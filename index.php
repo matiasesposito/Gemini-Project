@@ -20,26 +20,6 @@
 
 </head>
 
-<style>
-  body{
-    background: #222639;
-  }
-  .blinking-cursor {
-    margin-left: 5px;
-    background-color: #fff;
-    animation: blink 1s infinite;
-  }
-
-  @keyframes blink {
-    0%, 50% {
-      opacity: 1;
-    }
-    50.1%, 100% {
-      opacity: 0;
-    }
-  }
-</style>
-
 <body>
 
 <div class="group">
@@ -59,9 +39,6 @@
     name="searchbar"
   />
 </div>
-
-
-
 
 <div id="iblize_editor">
   
