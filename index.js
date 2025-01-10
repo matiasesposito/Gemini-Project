@@ -56,7 +56,7 @@ async function run() {
     generationConfig // Optional
   });
 
-  let pregunta = `¿Como funciona las Novedades de Terceros?`;
+  let pregunta = document.getElementById("search").value;
 
   const prompt = `A partir del siguiente texto: ${textoSource}, necesito que me 
                     contestes la siguiente pregunta: ${pregunta}`;
@@ -69,7 +69,16 @@ async function run() {
   typeWriter(respuesta, "editor");
 }
 
-run();
 
+// Event Listener para el boton de generar texto
+const input_search = document.getElementById("search");
+input_search.addEventListener("keydown",(e)=>{
+  if(e.key === "Enter"){
+    // Limpiar el editor
+    document.getElementById("iblize_editor").innerHTML = "";
+    // Ejecutar la funcion de generacion de texto
+    run();
+  }
+})
 
 
