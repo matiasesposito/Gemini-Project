@@ -5,7 +5,7 @@ async function doc_to_text(src, type) {
   try {
     return await docToText.extractToText(src, type);
   } catch (error) {
-    throw error; // Propagar el error para ser manejado en otro lugar
+    console.error("Error: " + error);
   }
 }
 

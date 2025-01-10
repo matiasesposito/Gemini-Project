@@ -1,48 +1,71 @@
+// Abrir el/los archivo/s y extraer el texto
+
+var textSrc=[
+  {
+    src: "documentos/Proceso_Liquidación_Haberes_Pasivos_Municipales.docx",
+    type: "docx"
+  },
+  {
+    src: "documentos/Documentación_Sist_Liq.docx",
+    type: "docx"
+  }
+]
+
+var textoSource = "";
+
+for (let i = 0; i < textSrc.length; i++) {
+  let src = textSrc[i].src;
+  let type = textSrc[i].type;
+  const texto = await extractText(src, type);
+  textoSource+=texto;
+}
+
+
+
+
+// Google Generative AI
 import {
-    GoogleGenerativeAI
-  } from "@google/generative-ai";
+  GoogleGenerativeAI
+} from "@google/generative-ai";
 
-  const API_KEY = "AIzaSyCpCTNhzw8P1wrygLOFpoWh1JS2brQQcUc";
+const API_KEY = "AIzaSyCpCTNhzw8P1wrygLOFpoWh1JS2brQQcUc";
 
-  const genAI = new GoogleGenerativeAI(API_KEY);
+const genAI = new GoogleGenerativeAI(API_KEY);
 
+const model = genAI.getGenerativeModel({
+  model: "gemini-1.5-flash"
+});
+
+// Parametros de generacion de texto
+const generationConfig = {
+  temperature: 0.5,
+  topP: 0.95,
+  topK: 40,
+  maxOutputTokens: 5000,
+  responseMimeType: "text/plain",
+};
+
+// Funcion para generar texto a partir de una pregunta
+async function run() {
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash"
+    model: "gemini-1.5-flash",
+    generationConfig // Optional
   });
 
-  const generationConfig = {
-    temperature: 0.5,
-    topP: 0.95,
-    topK: 40,
-    maxOutputTokens: 5000,
-    responseMimeType: "text/plain",
-  };
+  let pregunta = `¿Que hace la ventana de Asignación Familiar?`;
 
-  // Abrir el archivo y extraer el texto
-  let src = "Proceso_Liquidación_Haberes_Pasivos_Municipales.docx"
-  let type = "docx"
-  let textoPDF = await extractText(src,type)
-
-  async function run() {
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
-      generationConfig // Optional
-    });
-
-    let pregunta = `¿Como funciona el Ajuste a Mínima y Máxima?`;
-
-    const prompt = `A partir del siguiente texto: ${textoPDF}, necesito que me 
+  const prompt = `A partir del siguiente texto: ${textoSource}, necesito que me 
                     contestes la siguiente pregunta: ${pregunta}`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const respuesta = response.text();
-    
-    typeWriter(respuesta, "typewriter");
-  }
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  const respuesta = response.text();
 
-  run();
+  // Mostrar la respuesta en el editor
+  typeWriter(respuesta, "editor");
+}
+
+run();
 
 
 
-  
