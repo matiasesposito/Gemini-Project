@@ -25,8 +25,6 @@ for (let i = 0; i < textSrc.length; i++) {
 }
 
 
-
-
 // Google Generative AI
 import {
   GoogleGenerativeAI
@@ -39,6 +37,25 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash"
 });
+
+const historial = [
+  {
+    speaker: "user",
+    text: "Hola, ¿cómo estás?"
+  },
+  {
+    speaker: "bot",
+    text: "Hola, estoy bien, ¿y tú?"
+  },
+  {
+    speaker: "user",
+    text: "Estoy bien, gracias por preguntar"
+  },
+  {
+    speaker: "bot",
+    text: "¿En qué puedo ayudarte?"
+  }
+];
 
 // Parametros de generacion de texto
 const generationConfig = {
@@ -57,6 +74,11 @@ async function run() {
   });
 
   let pregunta = document.getElementById("search").value;
+
+  /*const prompt = `Dado el siguiente historial en forma de json: ${JSON.stringify(historial)},
+                  necesito que me contestes la siguiente pregunta: ${pregunta}
+                  teniedo como contexto el siguiente texto: ${textoSource}`;*/
+
 
   const prompt = `A partir del siguiente texto: ${textoSource}, necesito que me 
                     contestes la siguiente pregunta: ${pregunta}`;
