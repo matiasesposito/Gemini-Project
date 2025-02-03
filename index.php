@@ -53,7 +53,10 @@
     }
   }
     </script>
-  <script src="index.js" type="module"></script>
+  <!-- <script src="index.js" type="module"></script> -->
+  <script src="mvc_extracText.js" type="module"></script>
+  <script src="mvc_generativeIA.js" type="module"></script>
+  <script src="main.js" type="module"></script>
 </body>
 
 </html>
