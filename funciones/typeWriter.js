@@ -19,7 +19,7 @@ function typeWriter(text, idElement) {
       text_format = eliminarAcentos(text.slice(index - 1, index));
       iblize.insertText(text.length, text_format);
       index++;
-      setTimeout(type, Math.random() * 15);
+      setTimeout(type, 2);
     } else {
       //typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
     }
