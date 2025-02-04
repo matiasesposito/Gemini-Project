@@ -7,7 +7,7 @@ function typeWriter(text, idElement) {
 
   // Instanciar el editor
   const iblize = new Iblize("#iblize_editor", {
-    language: 'javascript',
+    language: 'sql',
     lineNumber: false,
   })
 

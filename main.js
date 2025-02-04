@@ -44,20 +44,22 @@ import { View_IA } from './models/model_generativeIA.js'
 // `
 
 import { resumirTexto } from './funciones/genAI.js'
-//import { typeWriter } from './funciones/typeWriter.js'
-
+import { extractText } from './funciones/extractText.js'
+import { notiflixBlock } from './funciones/notiflix.js'
 
 const formFile = document.getElementById("formFile");
-// Mostrar un mensaje en consola cuando se termine de cargar el archivo
+
 formFile.addEventListener("change", async (e) => {
   const file = e.target.files[0];
   const { name } = file;
   const ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
-  docToText.extractToText(file, ext).then(async function (textoCV) {
-     let respuesta = await resumirTexto(textoCV)
-     typeWriter(respuesta, "editor");
-  }).catch(function (error) {
-    console.log(error)
-  });
+
+  notiflixBlock("enable",".container-lg");
+  var textoCV = await extractText(file, ext);
+  var respuesta = await resumirTexto(textoCV);
+  notiflixBlock("disable",".container-lg");
+  typeWriter(respuesta, "editor");
 })
+
+
 
