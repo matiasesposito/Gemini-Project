@@ -52,7 +52,7 @@
 
 
 <form id="uploadFile" enctype="multipart/form-data">
-  <div class="mb-3 container-lg">
+  <div class="mb-3 container-lg p-5">
     <input class="form-control" type="file" id="formFile">
   </div>
 </form>

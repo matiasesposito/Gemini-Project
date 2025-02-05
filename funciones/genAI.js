@@ -8,7 +8,7 @@ const generationConfig = {
     temperature: 0.5,
     topP: 0.95,
     topK: 40,
-    maxOutputTokens: 50000,
+    maxOutputTokens: 5000000,
     responseMimeType: "text/plain",
 };
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
@@ -21,9 +21,10 @@ async function resumirTexto(textoCV){
                       claves. Para ello necesito que incluyas las palabras o frases 
                       claves, que incluyan estudios realizados, establecimientos o 
                       empresas en las que trabajo o datos personales relevantes como 
-                      su edad o fecha de nacimiento. La longitud de la respuesta 
+                      su edad o fecha de nacimiento (Datos como telefonos o hijos no 
+                      se deben incluir). La longitud de tu respuesta 
                       no debe superar las 300 palabras y no debe haber tabulaciones,
-                      saltos de linea o caracteres especiales como "*". Ejemplo: IVÁN NAHUEL 
+                      saltos de linea o caracteres del tipo * o #. Ejemplo: IVÁN NAHUEL 
                       ARES ROSSI - Especializado en Ciencia, Tecnología e 
                       Innovación orientada el Desarrollo Local - Licenciado en 
                       Administración - Vinculador Tecnológico - Magíster en 
@@ -38,4 +39,15 @@ async function resumirTexto(textoCV){
       return respuesta;
 }
 
-export { resumirTexto }
+async function responderAI(pregunta, fuente){
+  const prompt = `Responde la siguiente pregunta: ${pregunta} 
+                  teniendo en cuanta la fuente: ${fuente}`;
+
+//const prompt = `Resumen del siguiente texto: ${textoCV}`;
+const result =  await model.generateContent(prompt);
+const response =  await result.response;
+const respuesta = response.text();
+return respuesta;
+}
+
+export { resumirTexto, responderAI }

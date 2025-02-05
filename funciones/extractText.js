@@ -11,7 +11,7 @@ async function doc_to_text(src, type) {
 
 async function extractText(src, type) {
   const texto = await doc_to_text(src, type);
-  console.log(texto.length + "\n" +  texto);
+  //console.log(texto.length + "\n" +  texto);
   return texto;
 }
 
