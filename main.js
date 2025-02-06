@@ -105,25 +105,25 @@ btnSubmit.addEventListener("click", async (e) => {
 
 
 // ********Recorrer todos los CVs, resumirlos con IA y guardarlos en la BD ********
-for(const cv in cvSRC){
-  const src = cvSRC[cv].src;
-  const file = new File([src], src);
-  const { name } = file;
-  const ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
-  var reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.addEventListener('load', async function() {
-    const blob = reader.result;
-    // Extraer texto del archivo
-    var textoCV = await extractText(cvSRC[cv].src, cvSRC[cv].type);
-    // Resumir texto con IA
-    var respuesta = await resumirTexto(textoCV);
-    // Guardar resumen y blob en la BD
-    guardarResumenEvaluador(respuesta,blob);
-  });
-  // Esperar tres segundos para no saturar el servidor
-  await new Promise(resolve => setTimeout(resolve, 6000));
-}
+// for(const cv in cvSRC){
+//   const src = cvSRC[cv].src;
+//   const file = new File([src], src);
+//   const { name } = file;
+//   const ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
+//   var reader = new FileReader();
+//   reader.readAsDataURL(file);
+//   reader.addEventListener('load', async function() {
+//     const blob = reader.result;
+//     // Extraer texto del archivo
+//     var textoCV = await extractText(cvSRC[cv].src, cvSRC[cv].type);
+//     // Resumir texto con IA
+//     var respuesta = await resumirTexto(textoCV);
+//     // Guardar resumen y blob en la BD
+//     guardarResumenEvaluador(respuesta,blob);
+//   });
+//   // Esperar tres segundos para no saturar el servidor
+//   await new Promise(resolve => setTimeout(resolve, 6000));
+// }
 
 
 
