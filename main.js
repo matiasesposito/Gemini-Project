@@ -59,34 +59,70 @@ var cvSRC = [
 
 
 
-import { resumirTexto } from './funciones/genAI.js'
-import { responderAI } from './funciones/genAI.js'
+import { resumirTexto, responderIA } from './funciones/genAI.js'
 import { extractText } from './funciones/extractText.js'
 import { notiflixBlock } from './funciones/notiflix.js'
+import { guardarResumenEvaluador, getResumenEvaluadores } from './funciones/http_requests.js'
 
-const formFile = document.getElementById("formFile");
+
 
 // ********Evento para cargar un archivo, resumirlo con IA y guardarlo en ld BD ********
-// formFile.addEventListener("change", async (e) => {
-//   const file = e.target.files[0];
-//   const { name } = file;
-//   const ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
+const btnSubmit = document.getElementById("submit");
+btnSubmit.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const file = document.getElementById("archivo").files[0];
+  const { name } = file;
+  const ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
 
-//   notiflixBlock("enable",".container-lg");
-//   var textoCV = await extractText(file, ext);
-//   var respuesta = await resumirTexto(textoCV);
-//   notiflixBlock("disable",".container-lg");
-//   //typeWriter(respuesta, "editor");
-//   guardarResumenEvaluador(respuesta);
-// })
+  var reader = new FileReader();
+  // Convertir archivo a blob. readASDataURL devuelve un base64
+  reader.readAsDataURL(file);
+  // Evento que se dispara cuando se termina de leer el archivo
+  reader.addEventListener('load', async function() {
+    // const blob = new Blob([reader.result], { type: file.type });
+    const blob = reader.result;
+    notiflixBlock("enable",".container-lg");
+    // Extraer texto del archivo
+    var textoCV = await extractText(file, ext);
+    // Resumir texto con IA
+    var respuesta = await resumirTexto(textoCV);
+    // Guardar resumen y blob en la BD
+    guardarResumenEvaluador(respuesta,blob);
+    notiflixBlock("disable",".container-lg");
+  });
+
+  
+  
+
+  
+  
+  // Enviar archivo a servidor
+  // if (file && file.type === 'application/pdf') {
+    
+  // }
+  
+})
+
 
 // ********Recorrer todos los CVs, resumirlos con IA y guardarlos en la BD ********
 for(const cv in cvSRC){
-  var textoCV = await extractText(cvSRC[cv].src, cvSRC[cv].type);
-  var respuesta = await resumirTexto(textoCV);
+  const src = cvSRC[cv].src;
+  const file = new File([src], src);
+  const { name } = file;
+  const ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.addEventListener('load', async function() {
+    const blob = reader.result;
+    // Extraer texto del archivo
+    var textoCV = await extractText(cvSRC[cv].src, cvSRC[cv].type);
+    // Resumir texto con IA
+    var respuesta = await resumirTexto(textoCV);
+    // Guardar resumen y blob en la BD
+    guardarResumenEvaluador(respuesta,blob);
+  });
   // Esperar tres segundos para no saturar el servidor
-  await new Promise(resolve => setTimeout(resolve, 3000));
-  guardarResumenEvaluador(respuesta);
+  await new Promise(resolve => setTimeout(resolve, 6000));
 }
 
 
@@ -97,32 +133,9 @@ input_search.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
      let arrayEvaluadores = await getResumenEvaluadores();
      let txtEvaluadores = JSON.stringify(arrayEvaluadores);
-     let respuesta = await responderAI(input_search.value, txtEvaluadores);
+     let respuesta = await responderIA(input_search.value, txtEvaluadores);
      typeWriter(respuesta, "editor");
 
   }
 });
-
-
-// ******** Función para guardar un resumen generado con IA en la BD ********
-async function guardarResumenEvaluador(resumen){
-  var datosEvaluador = {
-    "nombre": "",
-    "resumen":resumen
-  }
-
-  fetch('/Gemini-Project/php/addEvaluador.php', {
-    method: 'POST',
-    body: JSON.stringify({datosEvaluador}),
-  }).then(response => response.json())
-    .then(response => console.log(response))
-}
-// ******** Función para obtener todos los resumenes de evaluadores de la BD ********
-async function getResumenEvaluadores() {
-  return fetch('/Gemini-Project/php/getEvaluadores.php', {
-    method: 'GET',
-  })
-    .then(response => response.json())
-    .then(data => data["array"]); 
-}
 

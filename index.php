@@ -51,9 +51,10 @@
 </div>
 
 
-<form id="uploadFile" enctype="multipart/form-data">
-  <div class="mb-3 container-lg p-5">
-    <input class="form-control" type="file" id="formFile">
+<form id="formFile" enctype="multipart/form-data" method="POST" class="container-lg">
+  <div class="d-flex flex-column align-items-center p-5">
+    <input class="form-control" type="file" name="archivo" id="archivo" accept=".pdf" required>
+    <input class="btn btn-primary mt-3 w-25" type="submit" id="submit" value="Subir">
   </div>
 </form>
 

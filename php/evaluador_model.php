@@ -10,7 +10,7 @@
     }
 
     public function getEvaluadores() {
-      $result = $this->db->sql("SELECT * FROM evaluadores");
+      $result = $this->db->sql("SELECT resumen FROM evaluadores");
       return $result;
     }
 
@@ -19,9 +19,9 @@
     //   return $this->db->getRecord();
     // }
 
-    public function addEvaluador($nombre, $resumen) {
-      $this->db->sql("INSERT INTO evaluadores (id,nombre, resumen) VALUES 
-                     (DEFAULT,'$nombre', '$resumen')");
+    public function insertEvaluador($nombre, $resumen, $blob) {
+      $this->db->sql("INSERT INTO evaluadores (id,nombre, resumen, dataPdf) VALUES 
+                    (DEFAULT,'$nombre', '$resumen', '$blob')");
       
     }
 

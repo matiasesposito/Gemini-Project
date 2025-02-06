@@ -39,7 +39,7 @@ async function resumirTexto(textoCV){
       return respuesta;
 }
 
-async function responderAI(pregunta, fuente){
+async function responderIA(pregunta, fuente){
   const prompt = `Responde la siguiente pregunta: ${pregunta} 
                   teniendo en cuanta la fuente: ${fuente}`;
 
@@ -50,4 +50,4 @@ const respuesta = response.text();
 return respuesta;
 }
 
-export { resumirTexto, responderAI }
+export { resumirTexto, responderIA }
