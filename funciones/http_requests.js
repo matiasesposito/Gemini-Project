@@ -6,11 +6,11 @@ async function guardarResumenEvaluador(resumen,blob){
       "blob":blob
     }
 
-    fetch('/Gemini-Project/php/addEvaluador.php', {
+    return fetch('/Gemini-Project/php/addEvaluador.php', {
       method: 'POST',
       body: JSON.stringify({datosEvaluador}),
     }).then(response => response.json())
-      .then(response => console.log(response))
+      .then(data => data)
   }
   // ******** Función para obtener todos los resumenes de evaluadores de la BD ********
   async function getResumenEvaluadores() {
