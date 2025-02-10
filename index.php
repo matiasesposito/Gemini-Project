@@ -10,15 +10,45 @@
 
 <body>
 
+<div class="card">
+    <div class="content">
+      <div class="header">
+        <span class="title"></span>
+        <span class="price">Cargar evaluador</span>
+      </div>
+      <pre class="desc">
+Dar de alta un nuevo evaluador 
+y subir su CV
+</pre>
+      <!-- <button type="button" class="action">Get Started</button> -->
+    </div>
+  </div>
+
   <div class="card">
     <div class="content">
       <div class="header">
-        <span class="title">*</span>
-        <span class="price">Free</span>
+        <span class="title"></span>
+        <span class="price">Cargar evaluador</span>
       </div>
-      <p class="desc">Etiam ac convallis enim, eget euismod dolor.</p>
+      <pre class="desc">
+Dar de alta un nuevo evaluador 
+y subir su CV
+</pre>
+      <!-- <button type="button" class="action">Get Started</button> -->
+    </div>
+  </div>
 
-      <button type="button" class="action">Get Started</button>
+  <div class="card">
+    <div class="content">
+      <div class="header">
+        <span class="title"></span>
+        <span class="price">Cargar evaluador</span>
+      </div>
+      <pre class="desc">
+Dar de alta un nuevo evaluador 
+y subir su CV
+</pre>
+      <!-- <button type="button" class="action">Get Started</button> -->
     </div>
   </div>
 
