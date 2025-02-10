@@ -52,12 +52,24 @@ return respuesta;
 
 
 async function getPalabrasClaves(texto){
-  const prompt = `El siguiente texto corresponde a un formulario cargado
-                  con los datos de un proyecto para poder financiarlo.
-                  Necesito que
-  
-                  [Palabra clave 1, Palabra clave 2, Palabra clave 3, ...]
-                  La fuente de texto es:${texto}`;
+  const prompt = `El siguiente texto corresponde a un formulario con
+                  los datos de un proyecto para poder financiarlo.
+                  Necesito que me retornes SOLO los datos que te voy a pasar a continuacion
+                  sin ningun caracter especial como comillas \` o *:
+                  1. Codigo del proyecto
+                  2. Titulo del proyecto
+                  3. Postulante (Nombre o Razon social)
+                  4. Persona a cargo de la direccion del proyecto
+                  7.D Palabras claves.
+                  Deberas devolvermelo el siguiente formato:
+                  {
+                    "Codigo del proyecto": "XXXX",
+                    "Titulo del proyecto": "XXXX",
+                    "Postulante": "XXXX",
+                    "Persona a cargo de la direccion del proyecto": "XXXX",
+                    "Palabras claves": ["Palabra clave 1", "Palabra clave 2", "Palabra clave 3", ...]
+                  }
+                  La fuente de texto es: ${texto}`;
   const result =  await model.generateContent(prompt);
   const response =  await result.response;
   const respuesta = response.text();
