@@ -10,33 +10,30 @@
 
 <body>
 
-<div class="card">
+<a href="cargar_evaluador/cargar.php">
+<div class="card" id="cargarEvaluador">
+  
     <div class="content">
       <div class="header">
-        <span class="title"></span>
-        <span class="price">Cargar evaluador</span>
+        <span class="tittle">Cargar evaluador</span>
       </div>
-      <pre class="desc">
-Dar de alta un nuevo evaluador 
-y subir su CV
-</pre>
-      <!-- <button type="button" class="action">Get Started</button> -->
+      <p class="desc">Dar de alta un nuevo evaluador y subir su CV</p>
     </div>
-  </div>
+  
+</div>
+</a>
 
-  <div class="card">
+<a href="buscar/buscar.php">
+<div class="card" id="buscarEvaluador">
     <div class="content">
       <div class="header">
-        <span class="title"></span>
-        <span class="price">Cargar evaluador</span>
+        <span class="tittle">Buscar evaluadores</span>
       </div>
-      <pre class="desc">
-Dar de alta un nuevo evaluador 
-y subir su CV
-</pre>
-      <!-- <button type="button" class="action">Get Started</button> -->
+      <p class="desc">Buscar evaluadores por </p>
     </div>
-  </div>
+  
+</div>
+</a>
 
   <div class="card">
     <div class="content">

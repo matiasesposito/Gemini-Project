@@ -9,18 +9,22 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 .card {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 320px;
+  width: 350px;
   height: 180px;
   display: flex;
   flex-direction: column;
   border-radius: 0.25rem;
   background: rgba(17, 24, 39, 1);
-  padding: 5rem 1rem;
+  padding: 5rem 0.25rem;
   transition: all 0.3s ease;
   cursor: pointer;
   box-shadow: 0 0rem 0.4rem rgb(225, 227, 230);
@@ -45,23 +49,17 @@ body {
   background-repeat: no-repeat;
   background-position: 50% 25%;
   background-size: 235px;
-  background-image: url('img/curriculum-vitae.png');
-
 }
+
+.card#cargarEvaluador:before{background-image: url('img/curriculum-vitae.png')}
+.card#buscarEvaluador:before{background-image: url('img/find-svgrepo-com.svg')}
 
 .header {
   display: flex;
   flex-direction: column;
 }
 
-.title {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-weight: 700;
-  color: #fff
-}
-
-.price {
+.tittle {
   font-size: 2.25rem;
   line-height: 1;
   font-weight: 700;
@@ -70,28 +68,14 @@ body {
 }
 
 .desc {
+  margin: auto;
   margin-top: 3.75rem;
   margin-bottom: 0.75rem;
   line-height: 1.625;
   text-align: center;
   color: rgba(156, 163, 175, 1);
   font-size: 1rem;
-}
-
-.action {
-  border: none;
-  outline: none;
-  display: inline-block;
-  border-radius: 0.25rem;
-  background-color: rgba(167, 139, 250, 1);
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  text-align: center;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: rgba(17, 24, 39, 1);
+  width: 75%;
 }
 
 
