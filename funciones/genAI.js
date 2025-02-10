@@ -50,4 +50,18 @@ const respuesta = response.text();
 return respuesta;
 }
 
-export { resumirTexto, responderIA }
+
+async function getPalabrasClaves(texto){
+  const prompt = `El siguiente texto corresponde a un formulario cargado
+                  con los datos de un proyecto para poder financiarlo.
+                  Necesito que
+  
+                  [Palabra clave 1, Palabra clave 2, Palabra clave 3, ...]
+                  La fuente de texto es:${texto}`;
+  const result =  await model.generateContent(prompt);
+  const response =  await result.response;
+  const respuesta = response.text();
+  return respuesta;
+}
+
+export { resumirTexto, responderIA, getPalabrasClaves }
