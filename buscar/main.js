@@ -8,26 +8,26 @@ import { extractText} from '/Gemini-Project/funciones/extractText.js'
  var src = "../documentos/Formulario_A.docx"
  var ext = "docx" 
 
-// const input_search = document.getElementById("search");
-// input_search.addEventListener("keydown", async (e) => {
-//   if (e.key === "Enter") {
-//     // Limpiar el editor
-//     document.getElementById("iblize_editor").innerHTML = "";
-//     notiflixBlock("enable", ".iblize_editor");
-//     let arrayEvaluadores = await getResumenEvaluadores();
-//     let txtEvaluadores = JSON.stringify(arrayEvaluadores);
-//     let respuesta = await responderIA(input_search.value, txtEvaluadores);
-//     notiflixBlock("disable", ".iblize_editor");
-//     // Mostrar la respuesta en el editor
-//     typeWriter(respuesta, "editor");
-//   }
-// });
-
 const input_search = document.getElementById("search");
 input_search.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {
-    var textoCV = await extractText(src, ext);
-    var respuesta = await getPalabrasClaves(textoCV);
-    console.log(respuesta)
+    // Limpiar el editor
+    document.getElementById("iblize_editor").innerHTML = "";
+    notiflixBlock("enable", ".iblize_editor");
+    let arrayEvaluadores = await getResumenEvaluadores();
+    let txtEvaluadores = JSON.stringify(arrayEvaluadores);
+    let respuesta = await responderIA(input_search.value, txtEvaluadores);
+    notiflixBlock("disable", ".iblize_editor");
+    // Mostrar la respuesta en el editor
+    typeWriter(respuesta, "editor");
   }
-})
+});
+
+// const input_search = document.getElementById("search");
+// input_search.addEventListener("keydown", async (e) => {
+//   if (e.key === "Enter") {
+//     var textoCV = await extractText(src, ext);
+//     var respuesta = await getPalabrasClaves(textoCV);
+//     console.log(respuesta)
+//   }
+// })
