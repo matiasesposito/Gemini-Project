@@ -34,7 +34,7 @@
       </div>
 
       <div class="g-col-12 g-col-md-4 mx-3">
-        <a href="cargar_evaluador/cargar.php">
+        <a href="buscar/buscar.php">
           <div class="card text-bg-dark text-center h-100">
             <img src="img/find-svgrepo-com.svg" class="card-img w-100 position-relative top-50 start-50 translate-middle" alt="...">
             <div class="card-img-overlay py-4 d-flex flex-column justify-content-center align-items-center">
@@ -46,7 +46,7 @@
       </div>
 
       <div class="g-col-12 g-col-md-4 mx-3">
-        <a href="cargar_evaluador/cargar.php">
+        <a href="buscar/buscar.php">
           <div class="card text-bg-dark text-center h-100">
             <img src="img/find-svgrepo-com.svg" class="card-img w-100 position-relative top-50 start-50 translate-middle" alt="...">
             <div class="card-img-overlay py-4 d-flex flex-column justify-content-center align-items-center">
