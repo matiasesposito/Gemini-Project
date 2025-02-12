@@ -29,6 +29,7 @@ a{
 } */
 
 .card{
+  transition: all 0.3s ease;
   background: rgba(17, 24, 39, 1) !important;
 }
 
