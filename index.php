@@ -20,12 +20,12 @@
     <div class="row justify-content-between gx-5">
       <div class="col-4">
         <a href="cargar_evaluador/cargar.php">
-          <div class="card text-bg-dark">
-            <img src="img/curriculum-vitae.png" class="card-img p-3" alt="...">
-            <div class="card-img-overlay">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small>Last updated 3 mins ago</small></p>
+          <div class="card text-bg-dark text-center">
+            <img src="img/curriculum-vitae.png" class="card-img p-5" alt="...">
+            <div class="card-img-overlay py-5 d-flex flex-column justify-content-between align-items-center">
+              <h3 class="card-title">Cargar Evaluador</h3>
+              <h5 class="card-text">Cargar los datos de un evaluador y subir su CV</h5>
+              <p class="card-text"><small></small></p>
             </div>
           </div>
         </a>
