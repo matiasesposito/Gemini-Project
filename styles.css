@@ -31,10 +31,12 @@ a{
 .card{
   transition: all 0.3s ease;
   background: rgba(17, 24, 39, 1) !important;
+  min-height: 400px !important;
 }
 
 img{
-  opacity: 0.25;
+  opacity: 0.10;
+  padding: 3rem;
   filter: contrast(100) invert(1) !important;
 }
 
@@ -87,3 +89,9 @@ img{
 } */
 
 
+@media screen and (max-width: 768px) {
+  img{
+    height: 100px;
+  }
+  
+}
