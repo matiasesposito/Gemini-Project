@@ -35,7 +35,8 @@ async function resumirTexto(textoCV){
       //const prompt = `Resumen del siguiente texto: ${textoCV}`;
       const result =  await model.generateContent(prompt);
       const response =  await result.response;
-      const respuesta = response.text();
+      var respuesta = response.text();
+      var respuesta = respuesta.trim();
       return respuesta;
 }
 
@@ -51,7 +52,7 @@ return respuesta;
 }
 
 
-async function getPalabrasClaves(texto){
+async function extraer_proyecto(texto){
   const prompt = `El siguiente texto corresponde a un formulario con
                   los datos de un proyecto para poder financiarlo.
                   Necesito que me retornes SOLO los datos que te voy a pasar a continuacion
@@ -63,17 +64,23 @@ async function getPalabrasClaves(texto){
                   7.D Palabras claves.
                   Deberas devolvermelo el siguiente formato:
                   {
-                    "Codigo del proyecto": "XXXX",
-                    "Titulo del proyecto": "XXXX",
+                    "Codigo": "XXXX",
+                    "Titulo": "XXXX",
                     "Postulante": "XXXX",
-                    "Persona a cargo de la direccion del proyecto": "XXXX",
-                    "Palabras claves": ["Palabra clave 1", "Palabra clave 2", "Palabra clave 3", ...]
+                    "Persona_a_cargo": "XXXX",
+                    "Palabras_claves": ["Palabra clave 1", "Palabra clave 2", "Palabra clave 3", ...]
                   }
                   La fuente de texto es: ${texto}`;
   const result =  await model.generateContent(prompt);
   const response =  await result.response;
-  const respuesta = response.text();
+  var respuesta = response.text();
+
+  // Borrar patrones no deseados: ` , 'json' y espacios al principio y final
+  respuesta = respuesta.replace(/`/g, '');
+  respuesta = respuesta.replace(/json/g, '');
+  respuesta = respuesta.trim();
+
   return respuesta;
 }
 
-export { resumirTexto, responderIA, getPalabrasClaves }
+export { resumirTexto, responderIA, extraer_proyecto }

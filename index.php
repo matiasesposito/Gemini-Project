@@ -46,12 +46,12 @@
       </div>
 
       <div class="g-col-12 g-col-md-4 mx-3">
-        <a href="buscar/buscar.php">
+        <a href="./extraer_datos/index.php">
           <div class="card text-bg-dark text-center h-100">
-            <img src="img/find-svgrepo-com.svg" class="card-img w-100 position-relative top-50 start-50 translate-middle" alt="...">
+            <img src="img/brand-microsoft-word-svgrepo-com.svg" class="card-img w-100 position-relative top-50 start-50 translate-middle" alt="...">
             <div class="card-img-overlay py-4 d-flex flex-column justify-content-center align-items-center">
-              <h2 class="card-title my-5">Buscar Evaluador</h2>
-              <h5 class="card-text my-5">Buscar evaluadores por</h5>
+              <h2 class="card-title my-5">Datos del proyecto</h2>
+              <h5 class="card-text my-5">Extraer los datos relevantes de un proyecto</h5>
             </div>
           </div>
         </a>

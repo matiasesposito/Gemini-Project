@@ -34,10 +34,39 @@
 
 <form id="formFile" enctype="multipart/form-data" method="POST" class="container-lg">
   <div class="d-flex flex-column align-items-center p-5">
-    <input class="form-control" type="file" name="archivo" id="archivo" accept=".pdf" required>
-    <input class="btn btn-primary mt-3 w-25" id="cargar_cv" value="Cargar CV">
+    <input class="form-control" type="file" name="archivo" id="archivo" accept=".docx" required>
+    <input class="btn btn-primary mt-3 w-25" type="submit" id="submit" value="Subir">
   </div>
 </form>
+
+<div class="container-xl visually-hidden">
+  <div class="d-flex flex-column align-items-center p-5">
+    <h2>Datos extraídos</h2>
+    <textarea id="text_area_json" class="form-control"></textarea>
+    <button class="btn btn-success mt-3 w-25">Completar datos</button>
+  </div>
+  <!-- Formulario de carga con los datos del proyecto -->
+   <div class="">
+    <div class="input-group mb-3">
+      <span class="input-group-text">Codigo</span>
+      <input type="text" class="form-control me-3" id="codigo">
+      <span class="input-group-text">Postulante</span>
+      <input type="text" class="form-control" id="postulante">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Titulo</span>
+      <input type="text" class="form-control" id="titulo">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Persona a cargo</span>
+      <input type="text" class="form-control me-3" id="persona_a_cargo">
+      <span class="input-group-text">Palabras Claves</span>
+      <input type="text" class="form-control" id="palabras_claves">
+    </div>
+   </div>
+</div>
+
+
 
 
 <script src="main.js" type="module"></script>

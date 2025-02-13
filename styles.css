@@ -1,4 +1,3 @@
-
 body {
   background: #222639;
   height: 100vh;
@@ -11,23 +10,6 @@ a{
   text-decoration: none;
 }
 
-/* .card {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  height: 350px;
-  max-width: 350px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 0.25rem;
-  background: rgba(17, 24, 39, 1);
-  padding: 5rem 1rem;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 0rem 0.4rem rgb(225, 227, 230);
-} */
-
 .card{
   transition: all 0.3s ease;
   background: rgba(17, 24, 39, 1) !important;
@@ -36,7 +18,8 @@ a{
 
 img{
   opacity: 0.10;
-  padding: 3rem;
+  padding: 0rem;
+  max-width: 75%;
   filter: contrast(100) invert(1) !important;
 }
 
@@ -46,52 +29,40 @@ img{
   box-shadow: 0 0rem 1.4rem 0.1rem rgb(225, 227, 230);
 }
 
-/* .card:before {
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 10px;
-  width: 100%;
-  height: 100%;
-  opacity: 0.25;
-  filter: contrast(100) invert(1);
-  background-repeat: no-repeat;
-  background-position: 50% 25%;
-  background-size: 235px;
-} */
-
-/* .card#cargarEvaluador:before{background-image: url('img/curriculum-vitae.png')}
-.card#buscarEvaluador:before{background-image: url('img/find-svgrepo-com.svg')}
-
-.header {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-tittle {
-  font-size: 2.25rem;
-  line-height: 1;
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-}
-
-.desc {
-  margin: auto;
-  margin-top: 3.75rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.625;
-  text-align: center;
-  color: rgba(156, 163, 175, 1);
-  font-size: 1.20rem;
-  width: 75%;
-} */
-
 
 @media screen and (max-width: 768px) {
-  img{
-    height: 100px;
+  .grid{
+    gap : 3rem !important;
+  }
+
+  .card{
+    min-height: 0vh !important;
+    height: 20vh !important;
+    text-align: left !important;
+  }
+
+  .card:hover{
+    scale: 1;
+    box-shadow: none;
+  }
+
+  .card-img-overlay{
+    padding: 0 !important;
+    width: 75% !important;
+    margin-left: auto !important;
+  }
+
+  .card-title,
+  .card-text{
+    width: 100% !important;
+    width: 100% !important;
+    margin: 5px 0px !important;
+  }
+
+  .card-img{
+    object-fit: contain !important;
+    height: 75% !important;
+    transform: translate(-100%, -50%) !important;
   }
   
 }

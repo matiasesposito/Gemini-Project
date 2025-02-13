@@ -6,7 +6,7 @@ function eliminarAcentos(str) {
 function typeWriter(text, idElement) {
 
   // Instanciar el editor
-  const iblize = new Iblize("#iblize_editor", {
+  const iblize = new Iblize(`#${idElement}`, {
     language: 'sql',
     lineNumber: false,
   })

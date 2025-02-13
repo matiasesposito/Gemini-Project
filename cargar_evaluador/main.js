@@ -67,7 +67,7 @@ var cvSRC = [
   
   
   // ********Evento para cargar un archivo, resumirlo con IA y guardarlo en ld BD ********
-  const btnSubmit = document.getElementById("submit");
+  const btnSubmit = document.getElementById("cargar_cv");
   btnSubmit.addEventListener("click", async (e) => {
     e.preventDefault();
     const file = document.getElementById("archivo").files[0];
@@ -88,7 +88,7 @@ var cvSRC = [
       var respuesta = await resumirTexto(textoCV);
       // Guardar resumen y blob en la BD
       var response = await guardarResumenEvaluador(respuesta,blob);
-      console.log(response);
+
       if(response.status == 1){
         notiflixBlock("disable",".container-lg");
         notiflixSuccess("Archivo subido correctamente");
