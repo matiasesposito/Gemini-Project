@@ -21,7 +21,9 @@ btnSubmit.addEventListener("click", async (e) => {
 
   // Remover clase visually-hidden
   var container = document.querySelector(".visually-hidden");
-  container.classList.remove("visually-hidden");
+  if(container != null){
+    container.classList.remove("visually-hidden");
+  }
   // Mostrar respuesta en el textarea
   var text_area_json = document.getElementById("text_area_json");
   text_area_json.value = respuesta;
@@ -40,8 +42,6 @@ function extraerJSON(){
     var titulo = document.getElementById("titulo");
     var persona_a_cargo = document.getElementById("persona_a_cargo");
     var palabras_claves = document.getElementById("palabras_claves");
-
-    console.log(obj);
 
     codigo.value = obj.Codigo;
     postulante.value = obj.Postulante;
