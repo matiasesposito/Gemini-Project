@@ -61,7 +61,7 @@ var cvSRC = [
   
   import { resumirTexto, responderIA } from '/Gemini-Project/funciones/genAI.js'
   import { guardarResumenEvaluador, getResumenEvaluadores } from '/Gemini-Project/funciones/http_requests.js'
-  import { notiflixBlock, notiflixSuccess } from '/Gemini-Project/funciones/notiflix.js'
+  import { notiflixBlock, notiflixSuccess, notiflixError } from '/Gemini-Project/funciones/notiflix.js'
   import { extractText} from '/Gemini-Project/funciones/extractText.js'
   
   
@@ -94,7 +94,7 @@ var cvSRC = [
         notiflixSuccess("Archivo subido correctamente");
       }else{
         notiflixBlock("disable",".container-lg");
-        notiflixError("Error al subir el archivo");
+        notiflixError("Error al subir el archivo" + response.error);
       }
     });
   

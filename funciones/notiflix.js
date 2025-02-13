@@ -32,4 +32,12 @@ function notiflixSuccess(message) {
     });
 }
 
-export { notiflixLoading, notiflixBlock, notiflixSuccess };
+function notiflixError(message) {
+  Notiflix.Notify.failure(message, {
+    timeout: 2200,
+    position: 'center-bottom',
+    fontSize: '16px',
+  });
+}
+
+export { notiflixLoading, notiflixBlock, notiflixSuccess, notiflixError };
