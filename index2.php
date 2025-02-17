@@ -15,7 +15,7 @@
 
 section .card{
   background-position: 50% 50%;
-  background-size: 80%;
+  background-size: calc(80% - 2vw) ;
   background-repeat: no-repeat;
   color: white;
   transition: all 0.3s ease;
@@ -48,7 +48,7 @@ section .card:hover{
   </header>
 
   <article class="r-start-4 r-end-8">
-    <section class="grid px-15 py-3 h-100%" md="cols-auto" lg="cols-3">
+    <section class="grid py-1 w-75% ma-auto h-100% gap-16 j-items-stretch" md="cols-auto" lg="cols-auto">
       <div class="bg-img-img/curriculum-vitae2.png card">
         <h2 class="text-xxl">Cargar Evaluador</h2>
         <h5 class="text-lg">Cargar los datos de un evaluador y subir su CV</h5>
