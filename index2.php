@@ -8,7 +8,6 @@
   <!-- mojocss -->
   <script src="https://unpkg.com/mojocss"></script>
   
-  <link rel="stylesheet" href="styles.css">
   <title>Menu</title>
 </head>
 
