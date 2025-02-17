@@ -19,7 +19,6 @@ section .card{
   background-repeat: no-repeat;
   color: white;
   transition: all 0.3s ease;
-  filter: invert(15%) sepia(5%) saturate(4136%) hue-rotate(183deg) brightness(100%) contrast(81%);
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -28,11 +27,13 @@ section .card{
   justify-content: center;
   text-align: center;
   font-family: Cambria;
+  background-color: rgba(17, 24, 39, 1);
 }
 
 section .card:hover{
-  filter: invert(25%) sepia(5%) saturate(4136%) hue-rotate(183deg) brightness(100%) contrast(81%);
   box-shadow: 0 0rem 1.4rem 0.1rem rgb(225, 227, 230);
+  background-color: rgba(17, 24, 39, 1);
+  scale: 1.05;
 }
 
 
@@ -48,7 +49,7 @@ section .card:hover{
 
   <article class="r-start-4 r-end-8">
     <section class="grid px-15 py-3 h-100%" md="cols-auto" lg="cols-3">
-      <div class="bg-img-img/curriculum-vitae.png card">
+      <div class="bg-img-img/curriculum-vitae2.png card">
         <h2 class="text-xxl">Cargar Evaluador</h2>
         <h5 class="text-lg">Cargar los datos de un evaluador y subir su CV</h5>
       </div>
