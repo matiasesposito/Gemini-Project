@@ -4,62 +4,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    <title>Bootstrap Example</title>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <!-- mojocss -->
+  <script src="https://unpkg.com/mojocss"></script>
   <title>Menu</title>
 </head>
 
-<body>
+<style type="text/css">
+
+section .card{
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  row-gap: 45px;
+  align-items: center;
+  padding: 0px 15px;
+  justify-content: center;
+  text-align: center;
+  font-family: Cambria;
+  background-color: rgba(17, 24, 39, 1);
+}
+
+.bg-img-img\/curriculum-vitae2\.png {
+  background-size: calc(80% - 2vw) !important;
+}
+
+.bg-img-img\/find2\.png{
+  background-size: calc(90% - 2vw) !important;
+}
+
+section .card:hover{
+  box-shadow: 0 0rem 1.4rem 0.1rem rgb(225, 227, 230);
+  background-color: rgba(17, 24, 39, 1);
+  scale: 1.05;
+}
 
 
 
 
-  <div class="container-xxl h-100 w-100 d-flex flex-column flex-wrap align-items-stretch justify-content-center">
-    <div class="grid text-center">
-      <div class="g-col-12 g-col-md-4 mx-3">
-        <a href="cargar_evaluador/cargar.php">
-          <div class="card text-bg-dark text-center h-100">
-            <img src="img/curriculum-vitae.png" class="card-img w-100 position-relative top-50 start-50 translate-middle" alt="...">
-            <div class="card-img-overlay py-4 d-flex flex-column justify-content-center align-items-center">
-              <h2 class="card-title my-5">Cargar Evaluador</h2>
-              <h5 class="card-text my-5">Cargar los datos de un evaluador y subir su CV</h5>
-            </div>
-          </div>
-        </a>
+</style>
+
+<body style="background: #222639;" class="h-100vh grid rows-10 px-5 py-2">
+
+  <header class="r-start-1 r-end-4">
+    
+  </header>
+
+  <article class="r-start-4 r-end-8">
+    <section class="grid py-1 w-80% ma-auto h-100% gap-16 j-items-stretch" md="cols-auto" lg="cols-auto">
+      <a class="bg-img-img/curriculum-vitae2.png card" href="cargar_evaluador/cargar.php">
+        <h2 class="text-xl">Cargar Evaluador</h2>
+        <h5 class="text-md">Cargar los datos de un evaluador y subir su CV</h5>
+      </a>
+      
+      <a class="bg-img-img/find2.png card" href="buscar/buscar.php">
+        <h2 class="text-xl">Buscar Evaluador</h2>
+        <h5 class="text-md">Buscar evaluadores por</h5>
+      </a>
+      <div class="bg-img-img/find2.png card">
+        <h2 class="text-xl">Buscar Evaluador</h2>
+        <h5 class="text-md">Buscar evaluadores por</h5>
       </div>
+    </section>
+  </article>
 
-      <div class="g-col-12 g-col-md-4 mx-3">
-        <a href="buscar/buscar.php">
-          <div class="card text-bg-dark text-center h-100">
-            <img src="img/find-svgrepo-com.svg" class="card-img w-100 position-relative top-50 start-50 translate-middle" alt="...">
-            <div class="card-img-overlay py-4 d-flex flex-column justify-content-center align-items-center">
-              <h2 class="card-title my-5">Buscar Evaluador</h2>
-              <h5 class="card-text my-5">Buscar evaluadores por</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="g-col-12 g-col-md-4 mx-3">
-        <a href="./extraer_datos/index.php">
-          <div class="card text-bg-dark text-center h-100">
-            <img src="img/brand-microsoft-word-svgrepo-com.svg" class="card-img w-100 position-relative top-50 start-50 translate-middle" alt="...">
-            <div class="card-img-overlay py-4 d-flex flex-column justify-content-center align-items-center">
-              <h2 class="card-title my-5">Datos del proyecto</h2>
-              <h5 class="card-text my-5">Extraer los datos relevantes de un proyecto</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-
-    </div>
-  </div>
+  <footer class="r-start-8 r-end-11">
+    
+  </footer>
 
 </body>
+<script>mojo();</script>
 
 </html>

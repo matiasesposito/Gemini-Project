@@ -1,3 +1,43 @@
 body{
-    background: #222639;
-  }
+  background: #222639;
+  color: #ddd;
+}
+
+textarea#text_area_json{
+  background: #3c4261;
+  color: #ddd;
+  min-height: 250px;
+  resize: none;
+}
+
+span.input-group-text{
+  background: #3c4261;
+  color: #ddd;
+}
+
+input.form-control,textarea.form-control{
+  margin: 0px 10px;
+
+}
+
+/* width */
+textarea::-webkit-scrollbar{
+  width: 7px;
+  height: 7px;
+}
+
+/* Track */
+textarea::-webkit-scrollbar-track{
+  background:#121212; 
+}
+ 
+/* Handle */
+textarea::-webkit-scrollbar-thumb{
+  background: #007bff;
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+textarea::-webkit-scrollbar-thumb:hover{
+  background: #0056b3;
+}

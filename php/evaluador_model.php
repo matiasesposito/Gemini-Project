@@ -19,10 +19,14 @@
     //   return $this->db->getRecord();
     // }
 
-    public function insertEvaluador($nombre, $resumen, $blob) {
-      $this->db->sql("INSERT INTO evaluadores (id,nombre, resumen, dataPdf) VALUES 
-                    (DEFAULT,'$nombre', '$resumen', '$blob')");
-      
+    public function insertEvaluador($nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob) {
+      try{
+      $this->db->sql("INSERT INTO evaluadores (id, nombre, dni, fecha_nacimiento, correo_electronico, ciudad_provincia, instituciones_empresas, perfiles_especialidades, dataPdf) VALUES 
+                    (DEFAULT, '$nombre', '$dni', '$fecha_nacimiento', '$correo_electronico', '$ciudad_provincia', '$instituciones_empresas', '$perfiles_especialidades', '$blob')");
+        return 1;
+      }catch(Exception $e){
+        return 0;
+      }
     }
 
     // public function updateEvaluador($id, $nombre, $apellido, $email, $telefono) {

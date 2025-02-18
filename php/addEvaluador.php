@@ -4,13 +4,17 @@ try {
   $datos = $datos["datosEvaluador"];
 
   $nombre = $datos["nombre"];
-  $resumen = $datos["resumen"];
-
+  $dni = $datos["dni"];
+  $fecha_nacimiento = $datos["fecha_nacimiento"];
+  $correo_electronico = $datos["correo_electronico"];
+  $ciudad_provincia = $datos["ciudad_provincia"];
+  $instituciones_empresas = $datos["instituciones_empresas"];
+  $perfiles_especialidades = $datos["perfiles_especialidades"];
   $blob = $datos["blob"];
 
   include("evaluador_model.php");
-  $evaluador = new EvaluadorModel();
-  $evaluador->insertEvaluador($nombre, $resumen, $blob);
+  $evaluadorModel = new EvaluadorModel();
+  $evaluadorModel->insertEvaluador($nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob);
 
 
   echo json_encode(array("status" => 1, "message" => "Evaluador agregado correctamente"));

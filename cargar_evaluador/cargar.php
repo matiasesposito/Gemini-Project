@@ -31,13 +31,48 @@
 
 <body>
 
+<div class="container-xl">
+  <form id="formFile" enctype="multipart/form-data" method="POST" class="container-lg">
+    <div class="d-flex flex-column align-items-center pt-5 pb-2">
+      <input class="form-control" type="file" name="archivo" id="archivo" accept=".pdf" required>
+      <input class="btn btn-primary mt-3 w-25" id="cargar_cv" value="Cargar CV">
+    </div>
+  </form>
+</div>
 
-<form id="formFile" enctype="multipart/form-data" method="POST" class="container-lg">
-  <div class="d-flex flex-column align-items-center p-5">
-    <input class="form-control" type="file" name="archivo" id="archivo" accept=".pdf" required>
-    <input class="btn btn-primary mt-3 w-25" id="cargar_cv" value="Cargar CV">
+<div class="container-xl visually-hidden">
+  <hr>
+  <div class="d-flex flex-column align-items-center mt-1 mb-3">
+    <h2>Datos extraídos</h2>
+    <textarea id="text_area_json" class="form-control" rows="10"></textarea>
+    <button class="btn btn-success mt-3 w-25">Completar formulario</button>
   </div>
-</form>
+  <hr>
+  <!-- Formulario de carga con los datos del proyecto -->
+    <div class="input-group mb-3">
+      <span class="input-group-text">Nombre y Apellido</span>
+      <input type="text" class="form-control me-3" id="nombre_apellido">
+      <span class="input-group-text">DNI/CUIL</span>
+      <input type="text" class="form-control" id="dni">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Fecha de Nacimiento</span>
+      <input type="date" class="form-control" id="fecha_nacimiento">
+      <span class="input-group-text">Correo Electrónico</span>
+      <input type="text" class="form-control" id="correo_electronico">
+      <span class="input-group-text">Ciudad/Provincia</span>
+      <input type="text" class="form-control me-3" id="ciudad_provincia">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Instituciones/Empresas</span>
+      <textarea class="form-control" id="instituciones_empresas" rows="3"></textarea>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text">Perfiles/Especialidades</span>
+      <textarea class="form-control" id="perfiles_especialidades" rows="3"></textarea>
+    </div>
+    <input class="btn btn-warning mt-3 w-25" id="guardar" value="Guardar datos>"> 
+</div>
 
 
 <script src="main.js" type="module"></script>

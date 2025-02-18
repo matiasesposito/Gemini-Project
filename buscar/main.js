@@ -1,7 +1,7 @@
-import { resumirTexto, responderIA, extraer_proyecto } from '/Gemini-Project/funciones/genAI.js'
-import { guardarResumenEvaluador, getResumenEvaluadores } from '/Gemini-Project/funciones/http_requests.js'
+import { responderIA } from '/Gemini-Project/funciones/genAI.js'
+import { getResumenEvaluadores } from '/Gemini-Project/funciones/http_requests.js'
 import { notiflixBlock } from '/Gemini-Project/funciones/notiflix.js'
-import { extractText} from '/Gemini-Project/funciones/extractText.js'
+
 // ******** Evento para buscar un evaluador mediante IA en la BD ********
 
 

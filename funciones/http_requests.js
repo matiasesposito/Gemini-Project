@@ -1,9 +1,14 @@
 // El resumen fue generado previamente con la funcion 'resumirTexto' de "genAI.js" 
-async function guardarResumenEvaluador(resumen,blob){
+async function guardarDatosEvaluador(datosEvaluador){
     var datosEvaluador = {
-      "nombre": "",
-      "resumen":resumen,
-      "blob":blob
+      "nombre": datosEvaluador.nombre,
+      "dni": datosEvaluador.dni,
+      "fecha_nacimiento": datosEvaluador.fecha_nacimiento,
+      "correo_electronico": datosEvaluador.correo_electronico,
+      "ciudad_provincia": datosEvaluador.ciudad_provincia,
+      "instituciones_empresas": datosEvaluador.instituciones_empresas,
+      "perfiles_especialidades": datosEvaluador.perfiles_especialidades,
+      "blob": datosEvaluador.blob
     }
 
     return fetch('/Gemini-Project/php/addEvaluador.php', {
@@ -24,4 +29,4 @@ async function guardarResumenEvaluador(resumen,blob){
 
 
 
-export { guardarResumenEvaluador, getResumenEvaluadores };
+export { guardarDatosEvaluador, getResumenEvaluadores };

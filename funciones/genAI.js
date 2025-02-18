@@ -13,7 +13,7 @@ const generationConfig = {
 };
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 
-async function resumirTexto(textoCV){
+async function resumirCV(textoCV){
       const prompt = `Necesito un resumen del CV de esta persona. Como ésta informacion
                       la voy a guardar en una base de datos para su posterior consulta, 
                       necesito que seas lo mas detallada posible pero a su vez no debe 
@@ -52,23 +52,27 @@ return respuesta;
 }
 
 
-async function extraer_proyecto(texto){
-  const prompt = `El siguiente texto corresponde a un formulario con
-                  los datos de un proyecto para poder financiarlo.
+async function extraerDatosCV(texto){
+  const prompt = `El siguiente texto corresponde a los datos de un CV.
                   Necesito que me retornes SOLO los datos que te voy a pasar a continuacion
                   sin ningun caracter especial como comillas \` o *:
-                  1. Codigo del proyecto
-                  2. Titulo del proyecto
-                  3. Postulante (Nombre o Razon social)
-                  4. Persona a cargo de la direccion del proyecto
-                  7.D Palabras claves.
+                  1. Nombre y Apellido
+                  2. DNI de la persona (si no tiene DNI, coloca el CUIL)
+                  3. Fecha de Nacimiento
+                  4. Correo electronico
+                  5. Ciudad y Provincia
+                  6. Instituciones o Empresas en las que trabajo o estudio
+                  7. Perfil, Especialidades, Estudios, Habilidades o Experiencias
+                  En caso de no encontrar alguno de estos datos, coloca "" en su lugar.
                   Deberas devolvermelo el siguiente formato:
                   {
-                    "Codigo": "XXXX",
-                    "Titulo": "XXXX",
-                    "Postulante": "XXXX",
-                    "Persona_a_cargo": "XXXX",
-                    "Palabras_claves": ["Palabra clave 1", "Palabra clave 2", "Palabra clave 3", ...]
+                    "nombre_apellido": "XXXX",
+                    "dni": "XXXX",
+                    "fecha_nacimiento": "aaaa-mm-dd",
+                    "correo_electronico": "XXXX",
+                    "ciudad_provincia": "XXXX",
+                    "instituciones_empresas": ["Institucion 1", "Institucion 2", "Institucion 3", ...],
+                    "perfiles_especialidades": ["Especialidad 1", "Especialidad 2", "Especialidad 3", ...]
                   }
                   La fuente de texto es: ${texto}`;
   const result =  await model.generateContent(prompt);
@@ -83,4 +87,4 @@ async function extraer_proyecto(texto){
   return respuesta;
 }
 
-export { resumirTexto, responderIA, extraer_proyecto }
+export { resumirCV, responderIA, extraerDatosCV }
