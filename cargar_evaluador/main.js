@@ -94,8 +94,6 @@ var cvSRC = [
       text_area_json.value = jsonDatosCV;
       notiflixBlock("disable",".container");
     });
-  
-    
   })
 
 

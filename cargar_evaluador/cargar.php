@@ -45,11 +45,11 @@
   <div class="d-flex flex-column align-items-center mt-1 mb-3">
     <h2>Datos extraídos</h2>
     <textarea id="text_area_json" class="form-control" rows="10"></textarea>
-    <button class="btn btn-success mt-3 w-25" id="completar_formulario">Completar formulario</button>
+    <input class="btn btn-success mt-3" id="completar_formulario" value="Completar formulario CV">
   </div>
   <hr>
   <!-- Formulario de carga con los datos del proyecto -->
-  <form id="formFile" method="POST" class="container-lg d-flex flex-column align-items-center">
+  <div class="container-lg d-flex flex-column align-items-center">
     <div class="input-group mb-3">
       <span class="input-group-text">Nombre y Apellido</span>
       <input type="text" class="form-control me-3" id="nombre_apellido">
@@ -72,8 +72,8 @@
       <span class="input-group-text">Perfiles/Especialidades</span>
       <textarea class="form-control" id="perfiles_especialidades" rows="3"></textarea>
     </div>
-    <input class="btn btn-warning mt-3 w-25 m-auto" id="guardar_datos" value="Guardar datos">
-  </form>
+    <input class="btn btn-warning mt-3 m-auto" id="guardar_datos" value="Guardar datos">
+  </div>
 </div>
 
 

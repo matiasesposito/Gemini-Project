@@ -1,20 +1,20 @@
 import {
-    GoogleGenerativeAI
-  } from "@google/generative-ai";
+  GoogleGenerativeAI
+} from "@google/generative-ai";
 
 const api_key = 'AIzaSyCpCTNhzw8P1wrygLOFpoWh1JS2brQQcUc';
 const genAI = new GoogleGenerativeAI(api_key);
 const generationConfig = {
-    temperature: 0.5,
-    topP: 0.95,
-    topK: 40,
-    maxOutputTokens: 5000000,
-    responseMimeType: "text/plain",
+  temperature: 0.5,
+  topP: 0.95,
+  topK: 40,
+  maxOutputTokens: 5000000,
+  responseMimeType: "text/plain",
 };
 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
 
-async function resumirCV(textoCV){
-      const prompt = `Necesito un resumen del CV de esta persona. Como ésta informacion
+async function resumirCV(textoCV) {
+  const prompt = `Necesito un resumen del CV de esta persona. Como ésta informacion
                       la voy a guardar en una base de datos para su posterior consulta, 
                       necesito que seas lo mas detallada posible pero a su vez no debe 
                       ser demasiada extensa por lo que solo debe devolver los datos 
@@ -32,27 +32,27 @@ async function resumirCV(textoCV){
                       Experiencia en el sector publico: Ministerio de Producción, 
                       Ciencia e Innovación  Tecnológica. Provincia de Buenos Aires, etc
                       **Fuente**: ${textoCV}`;
-      //const prompt = `Resumen del siguiente texto: ${textoCV}`;
-      const result =  await model.generateContent(prompt);
-      const response =  await result.response;
-      var respuesta = response.text();
-      var respuesta = respuesta.trim();
-      return respuesta;
+  //const prompt = `Resumen del siguiente texto: ${textoCV}`;
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  var respuesta = response.text();
+  var respuesta = respuesta.trim();
+  return respuesta;
 }
 
-async function responderIA(pregunta, fuente){
+async function responderIA(pregunta, fuente) {
   const prompt = `Responde la siguiente pregunta: ${pregunta} 
                   teniendo en cuanta la fuente: ${fuente}`;
 
-//const prompt = `Resumen del siguiente texto: ${textoCV}`;
-const result =  await model.generateContent(prompt);
-const response =  await result.response;
-const respuesta = response.text();
-return respuesta;
+  //const prompt = `Resumen del siguiente texto: ${textoCV}`;
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  const respuesta = response.text();
+  return respuesta;
 }
 
 
-async function extraerDatosCV(texto){
+async function extraerDatosCV(texto) {
   const prompt = `El siguiente texto corresponde a los datos de un CV.
                   Necesito que me retornes SOLO los datos que te voy a pasar a continuacion
                   sin ningun caracter especial como comillas \` o *:
@@ -75,8 +75,8 @@ async function extraerDatosCV(texto){
                     "perfiles_especialidades": ["Especialidad 1", "Especialidad 2", "Especialidad 3", ...]
                   }
                   La fuente de texto es: ${texto}`;
-  const result =  await model.generateContent(prompt);
-  const response =  await result.response;
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
   var respuesta = response.text();
 
   // Borrar patrones no deseados: ` , 'json' y espacios al principio y final
