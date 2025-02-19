@@ -16,6 +16,7 @@ async function guardarDatosEvaluador(datosEvaluador){
       body: JSON.stringify({datosEvaluador}),
     }).then(response => response.json())
       .then(data => data)
+      .catch(error => console.log('Error:', error));
   }
   // ******** Función para obtener todos los resumenes de evaluadores de la BD ********
   async function getResumenEvaluadores() {

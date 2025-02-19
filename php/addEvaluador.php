@@ -14,10 +14,10 @@ try {
 
   include("evaluador_model.php");
   $evaluadorModel = new EvaluadorModel();
-  $evaluadorModel->insertEvaluador($nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob);
+  $sql = $evaluadorModel->insertEvaluador($nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob);
 
 
-  echo json_encode(array("status" => 1, "message" => "Evaluador agregado correctamente"));
+  echo json_encode(array("status" => 1, "message" => "Evaluador agregado correctamente", "sql" => $sql));
 } catch (Exception $e) {
   echo json_encode(array("status" => 0, "message" => "Error al agregar evaluador", "error" => $e->getMessage()));
 }

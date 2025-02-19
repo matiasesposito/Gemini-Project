@@ -57,7 +57,7 @@ async function extraerDatosCV(texto){
                   Necesito que me retornes SOLO los datos que te voy a pasar a continuacion
                   sin ningun caracter especial como comillas \` o *:
                   1. Nombre y Apellido
-                  2. DNI de la persona (si no tiene DNI, coloca el CUIL)
+                  2. DNI de la persona (DNI:Entero de 8 digitos sin guiones, espacios ni puntos. Si no tiene DNI, colocar el CUIL)
                   3. Fecha de Nacimiento
                   4. Correo electronico
                   5. Ciudad y Provincia
@@ -67,7 +67,7 @@ async function extraerDatosCV(texto){
                   Deberas devolvermelo el siguiente formato:
                   {
                     "nombre_apellido": "XXXX",
-                    "dni": "XXXX",
+                    "dni": "NNNNNNNN",
                     "fecha_nacimiento": "aaaa-mm-dd",
                     "correo_electronico": "XXXX",
                     "ciudad_provincia": "XXXX",
