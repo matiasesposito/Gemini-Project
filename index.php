@@ -76,62 +76,7 @@ section .card:hover{
   </footer>
 
 </body>
+
 <script>mojo();</script>
-
-<script type="importmap">
-    {
-    "imports": {
-        "@google/generative-ai": "https://esm.run/@google/generative-ai"
-    }
-  }
-    </script>
-
-<script type="module">
-  import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const api_key = 'AIzaSyCpCTNhzw8P1wrygLOFpoWh1JS2brQQcUc';
-const genAI = new GoogleGenerativeAI(api_key);
-
-const generationConfig = {
-    temperature: 0.5,
-    topP: 0.95,
-    topK: 40,
-    maxOutputTokens: 5000000,
-    responseMimeType: "application/json", // Cambia esto a application/json
-};
-
-const model = genAI.getGenerativeModel({ 
-    model: "gemini-2.0-flash-exp", 
-    generationConfig 
-});
-
-async function responderIA(pregunta, fuente) {
-    const prompt = `Responde la siguiente pregunta: ${pregunta} 
-                    teniendo en cuenta la fuente: ${fuente}. 
-                    Devuelve la respuesta en formato JSON con la siguiente estructura: 
-                    { "respuesta": "tu_respuesta_aquí" }`;
-
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const respuesta = response.text();
-
-    // Parsea la respuesta JSON
-    try {
-        const jsonRespuesta = JSON.parse(respuesta);
-        return jsonRespuesta;
-    } catch (error) {
-        console.error("Error al parsear la respuesta JSON:", error);
-        return { error: "La respuesta no es un JSON válido" };
-    }
-}
-
-// Ejemplo de uso
-(async () => {
-    const pregunta = "¿Cuál es la capital de Francia?";
-    const fuente = "Conocimiento general";
-    const respuesta = await responderIA(pregunta, fuente);
-    console.log(respuesta);
-})();
-</script>
 
 </html>
