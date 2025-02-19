@@ -27,16 +27,20 @@ function notiflixBlock(enable_disable, className){
 function notiflixSuccess(message) {
   Notiflix.Notify.success(message, {
     timeout: 2200,
-    position: 'center-bottom',
+    width: '50vw',
+    position: 'left-bottom',
     fontSize: '16px',
+    cssAnimationStyle: 'from-left',
     });
 }
 
 function notiflixError(message) {
   Notiflix.Notify.failure(message, {
     timeout: 2200,
-    position: 'center-bottom',
+    width: '50vw',
+    position: 'left-bottom',
     fontSize: '16px',
+    cssAnimationStyle: 'from-left',
   });
 }
 

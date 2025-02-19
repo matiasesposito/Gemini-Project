@@ -33,14 +33,14 @@ class EvaluadorModel
       $ciudad_provincia == "" ? $ciudad_provincia = "NULL" : $ciudad_provincia = "'" . $ciudad_provincia . "'";
       $instituciones_empresas == "" ? $instituciones_empresas = "NULL" : $instituciones_empresas = "'" . $instituciones_empresas . "'";
       $perfiles_especialidades == "" ? $perfiles_especialidades = "NULL" : $perfiles_especialidades = "'" . $perfiles_especialidades . "'";
-
+      $blob == "" ? $blob = "NULL" : $blob = "'" . $blob . "'";
 
       $sql = "INSERT INTO evaluadores (id, nombre, dni, fecha_nacimiento, correo_electronico, ciudad_provincia, instituciones_empresas, perfiles_especialidades, dataPdf) VALUES 
-                    (DEFAULT, $nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, '$blob')";
+                    (DEFAULT, $nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob)";
 
 
       $this->db->sql($sql);
-      return $sql;
+      return 1;
     } catch (Exception $e) {
       return 0;
     }

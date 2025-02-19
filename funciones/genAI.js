@@ -63,7 +63,7 @@ async function extraerDatosCV(texto){
                   5. Ciudad y Provincia
                   6. Instituciones o Empresas en las que trabajo o estudio
                   7. Perfil, Especialidades, Estudios, Habilidades o Experiencias
-                  En caso de no encontrar alguno de estos datos, coloca "" en su lugar.
+                  En caso de no encontrar alguno de estos datos, coloca null en su lugar.
                   Deberas devolvermelo el siguiente formato:
                   {
                     "nombre_apellido": "XXXX",
@@ -83,7 +83,6 @@ async function extraerDatosCV(texto){
   respuesta = respuesta.replace(/`/g, '');
   respuesta = respuesta.replace(/json/g, '');
   respuesta = respuesta.trim();
-
   return respuesta;
 }
 
