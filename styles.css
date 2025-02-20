@@ -6,29 +6,6 @@ body {
   margin: 0;
 }
 
-a{
-  text-decoration: none;
-}
-
-.card{
-  transition: all 0.3s ease;
-  background: rgba(17, 24, 39, 1) !important;
-  min-height: 400px !important;
-}
-
-img{
-  opacity: 0.10;
-  padding: 0rem;
-  max-width: 75%;
-  filter: contrast(100) invert(1) !important;
-}
-
-.card:hover{
-  scale: 1.05;
-  background: rgb(32, 42, 65);
-  box-shadow: 0 0rem 1.4rem 0.1rem rgb(225, 227, 230);
-}
-
 
 @media screen and (max-width: 768px) {
   .grid{

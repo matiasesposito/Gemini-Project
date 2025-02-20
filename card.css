@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+*{
+  margin:0px;
+  padding:0px;
+  box-sizing: border-box;
+}
+:root{
+  --color-text: #333;
+  --color-text-btn: #ffffff;
+  --card1-gradient-color1: rgba(17, 24, 39, 0.75);
+  --card1-gradient-color2: rgba(17, 24, 39, 1);
+  --card2-gradient-color1: #7F00FF;
+  --card2-gradient-color2: #E100FF;
+  --card3-gradient-color1: #3f2b96;
+  --card3-gradient-color2: #a8c0ff;
+  --card4-gradient-color1: #11998e;
+  --card4-gradient-color2: #38ef7d;
+}
+
+body{
+    background: rgb(34, 38, 57) !important;
+}
+
+a{
+    text-decoration: none;
+}
+
+.card-wrap{
+  width: 220px;
+  background: #dde0e2;
+  border-radius: 20px;
+  border: 5px solid #fff;
+  overflow: hidden;
+  color: var(--color-text);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+              rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+}
+
+.card-wrap:hover{
+  transform: scale(1.1);
+}
+
+.card-header{
+  height: 200px;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  transition: all .15s ease-in-out;
+}
+
+.card-wrap:hover .card-header{
+  border-radius:100% 0% 100% 0% / 0% 50% 50% 100%;
+}
+
+.card-header i{
+  font-size: 5.5em;
+  position: relative;
+  right: 2%;
+  bottom: 2%;
+  color: #ddd;
+  margin: 0;
+}
+.card-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  width: 90%;
+  margin: 25px auto;
+  color: var(--color-text);
+}
+.card-title{
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.card-text{
+  text-align: center;
+  font-size: 14px;
+}
+.card-btn{
+  border: none;
+  border-radius: 100px;
+  padding: 5px 30px;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.card-header.one{
+  background: linear-gradient(to bottom left, var(--card1-gradient-color1), var(--card1-gradient-color2));
+}
+.card-header.two{
+  background: linear-gradient(to bottom left, var(--card2-gradient-color1), var(--card2-gradient-color2));
+}
+.card-header.three{
+  background: linear-gradient(to bottom left, var(--card3-gradient-color1), var(--card3-gradient-color2));
+}
+.card-header.four{
+  background: linear-gradient(to bottom left, var(--card4-gradient-color1), var(--card4-gradient-color2));
+}
+
+.card-btn.one{
+  background: linear-gradient(to left, var(--card1-gradient-color1), var(--card1-gradient-color2));
+}
+.card-btn.two{
+  background: linear-gradient(to left, var(--card2-gradient-color1), var(--card2-gradient-color2));
+}
+.card-btn.three{
+  background: linear-gradient(to left, var(--card3-gradient-color1), var(--card3-gradient-color2));
+}
+.card-btn.four{
+  background: linear-gradient(to left, var(--card4-gradient-color1), var(--card4-gradient-color2));
+}
