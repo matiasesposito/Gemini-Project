@@ -61,8 +61,8 @@ async function extraerDatosCV(texto) {
                   3. Fecha de Nacimiento
                   4. Correo electronico
                   5. Ciudad y Provincia
-                  6. Instituciones o Empresas en las que trabajo o estudio
-                  7. Perfil, Especialidades, Estudios, Habilidades o Experiencias
+                  6. Instituciones, Universidades o Empresas en las que trabajó, estudio o tuvo algun tipo de participacion.
+                  7. Perfil academico, Especialidades, Estudios, Habilidades, Idiomas o Experiencias
                   En caso de no encontrar alguno de estos datos, coloca null en su lugar.
                   Deberas devolvermelo el siguiente formato:
                   {
