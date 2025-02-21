@@ -44,4 +44,18 @@ function notiflixError(message) {
   });
 }
 
+function nitiflixConfirmDuplicado() {
+  Notiflix.Confirm.show('Advertencia',
+                        'Ya existe un evaluador con el mismo nombre',
+                        'Continuar',
+                        'Cancelar',
+                        ()=>{
+                          return true;
+                        },
+                       ()=>{
+                         return false; 
+                        }
+                      );
+}
+
 export { notiflixLoading, notiflixBlock, notiflixSuccess, notiflixError };
