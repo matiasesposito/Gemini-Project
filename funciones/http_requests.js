@@ -28,6 +28,12 @@ async function guardarDatosEvaluador(datosEvaluador){
   }
 
 
+  async function getNombresEvaluadores() {
+    return fetch('/Gemini-Project/php/getNombresEvaluadores.php', {
+      method: 'GET',
+    })
+      .then(response => response.json())
+      .then(data => data["array"]); 
+  }
 
-
-export { guardarDatosEvaluador, getResumenEvaluadores };
+export { guardarDatosEvaluador, getResumenEvaluadores, getNombresEvaluadores };

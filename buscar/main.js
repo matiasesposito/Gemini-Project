@@ -4,10 +4,6 @@ import { notiflixBlock } from '/Gemini-Project/funciones/notiflix.js'
 
 // ******** Evento para buscar un evaluador mediante IA en la BD ********
 
-
- var src = "../documentos/Formulario_A.docx"
- var ext = "docx" 
-
 const input_search = document.getElementById("search");
 input_search.addEventListener("keydown", async (e) => {
   if (e.key === "Enter") {

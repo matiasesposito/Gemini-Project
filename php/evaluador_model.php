@@ -17,10 +17,10 @@ class EvaluadorModel
     return $result;
   }
 
-  // public function getEvaluador($id) {
-  //   $this->db->sql("SELECT * FROM evaluadores WHERE id = $id");
-  //   return $this->db->getRecord();
-  // }
+  public function getNombreEvaluadores(){
+    $result = $this->db->sql("SELECT nombre FROM evaluadores");
+    return $result;
+  }
 
   public function insertEvaluador($nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob)
   {

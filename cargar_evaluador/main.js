@@ -59,8 +59,8 @@ var cvSRC = [
   
   
   
-  import { extraerDatosCV } from '/Gemini-Project/funciones/genAI.js'
-  import { guardarDatosEvaluador } from '/Gemini-Project/funciones/http_requests.js'
+  import { extraerDatosCV, nombreDuplicado } from '/Gemini-Project/funciones/genAI.js'
+  import { guardarDatosEvaluador} from '/Gemini-Project/funciones/http_requests.js'
   import { notiflixBlock, notiflixSuccess, notiflixError } from '/Gemini-Project/funciones/notiflix.js'
   import { extractText} from '/Gemini-Project/funciones/extractText.js'
   
@@ -118,7 +118,7 @@ var cvSRC = [
     }
   }
 
-  function completarFormulario(){
+  async function completarFormulario(){
     var text_area_json = document.getElementById("text_area_json");
     var json = text_area_json.value;
     var obj = JSON.parse(json);
@@ -138,8 +138,13 @@ var cvSRC = [
     ciudad_provincia.value = obj.ciudad_provincia;
     instituciones_empresas.innerHTML = obj.instituciones_empresas;
     perfiles_especialidades.innerHTML = obj.perfiles_especialidades;
-  }
 
+    // Verificar si el nombre ya se encuentra en la base de datos
+    var duplicado = await nombreDuplicado(nombre_apellido.value);
+    if(duplicado){
+      notiflixError("El nombre ya se encuentra en la base de datos");
+    }
+  }
 
   const btn_completar = document.getElementById("completar_formulario");
   const btn_guardar = document.getElementById("guardar_datos");
