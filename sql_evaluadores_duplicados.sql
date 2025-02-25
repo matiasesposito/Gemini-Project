@@ -1,5 +1,3 @@
-SET @busqueda = 'Benitez Alejandra Laura';
-
 SELECT *
 FROM evaluadores
 WHERE 
