@@ -2,23 +2,23 @@ function notiflixLoading(enable_disable) {
   if (enable_disable === 'enable') {
     Notiflix.Loading.pulse();
     return;
-  }else if (enable_disable === 'disable') {
+  } else if (enable_disable === 'disable') {
     Notiflix.Loading.remove();
     return;
   }
 }
 
 // Primer parametro: enable_disable = 'enable' o 'disable'
-function notiflixBlock(enable_disable, className){
+function notiflixBlock(enable_disable, className) {
 
   if (enable_disable === 'enable') {
-    Notiflix.Block.dots( className, {
+    Notiflix.Block.dots(className, {
       backgroundColor: 'rgba(0,0,0,0.5)',
       svgColor: '#fff',
     });
     return;
-  }else if (enable_disable === 'disable') {
-    Notiflix.Block.remove( className );
+  } else if (enable_disable === 'disable') {
+    Notiflix.Block.remove(className);
     return;
   }
 
@@ -26,36 +26,68 @@ function notiflixBlock(enable_disable, className){
 
 function notiflixSuccess(message) {
   Notiflix.Notify.success(message, {
-    timeout: 2200,
-    width: '50vw',
-    position: 'left-bottom',
+    timeout: 2500,
+    width: '90vw',
+    position: 'center-bottom',
     fontSize: '16px',
-    cssAnimationStyle: 'from-left',
-    });
+    cssAnimationStyle: 'from-top',
+  });
 }
 
 function notiflixError(message) {
   Notiflix.Notify.failure(message, {
-    timeout: 2200,
-    width: '50vw',
-    position: 'left-bottom',
+    timeout: 2500,
+    width: '90vw',
+    position: 'center-bottom',
     fontSize: '16px',
-    cssAnimationStyle: 'from-left',
+    cssAnimationStyle: 'from-top',
   });
 }
 
-function nitiflixConfirmDuplicado() {
-  Notiflix.Confirm.show('Advertencia',
-                        'Ya existe un evaluador con el mismo nombre',
-                        'Continuar',
-                        'Cancelar',
-                        ()=>{
-                          return true;
-                        },
-                       ()=>{
-                         return false; 
-                        }
-                      );
+async function notiflixConfirmDuplicado(arrayDuplicados) {
+
+  let string = '';
+  arrayDuplicados.forEach(element => {
+    string += `<p> <b>ID:</b> ${element.id}, <b>Nombre:</b> ${element.nombre} </p> <br>`;
+  });
+
+  let options = {
+    titleMaxLength: 100,
+    messageMaxLength: 500000,
+    plainText : false,
+    with: '50vw',
+    fontSize: '16px',
+    cssAnimationStyle: 'from-top'
+  }
+
+  // Notiflix.Confirm.show(
+  //   'Advertencia de evaluadores duplicados',
+  //    string,
+  //   'Continuar',
+  //   'Cancelar',
+  //   () => {
+  //     return true;
+  //   },
+  //   () => {
+  //     return false;
+  //   },
+  //   options
+  // );
+  return new Promise((resolve, reject) => {
+    Notiflix.Confirm.show(
+      'Advertencia de posibles evaluadores duplicados',
+      string,
+      'Continuar',
+      'Cancelar',
+      () => {
+        resolve(true);
+      },
+      () => {
+        resolve(false);
+      },
+      options
+    );
+  });
 }
 
-export { notiflixLoading, notiflixBlock, notiflixSuccess, notiflixError };
+export { notiflixLoading, notiflixBlock, notiflixSuccess, notiflixError, notiflixConfirmDuplicado };

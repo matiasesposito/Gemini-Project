@@ -46,13 +46,21 @@ class EvaluadorModel
     }
   }
 
-  // public function updateEvaluador($id, $nombre, $apellido, $email, $telefono) {
-  //   $this->db->sql("UPDATE evaluador SET nombre = '$nombre', apellido = '$apellido', email = '$email', telefono = '$telefono' WHERE id = $id");
-  //   return $this->db->execute();
-  // }
+  public function getDuplicados($nombreCompleto){
+    // Obtener cada nombre separado por un espacio
+    $nombres = explode(" ", $nombreCompleto);
+    $substr = "(";
+    foreach($nombres as $key => $value){
+      $substr .= "(INSTR(nombre, '$value') > 0) +";
+    }
+    $substr = substr($substr, 0, -1);
+    $substr = $substr . ") >= 2";
 
-  // public function deleteEvaluador($id) {
-  //   $this->db->sql("DELETE FROM evaluador WHERE id = $id");
-  //   return $this->db->execute();
-  // }
+    $sql = "SELECT *
+            FROM evaluadores
+            WHERE $substr";
+    $result = $this->db->sql($sql);
+
+    return $result;
+  }
 }

@@ -59,16 +59,16 @@ var cvSRC = [
   
   
   
-  import { extraerDatosCV, nombreDuplicado } from '/Gemini-Project/funciones/genAI.js'
-  import { guardarDatosEvaluador} from '/Gemini-Project/funciones/http_requests.js'
-  import { notiflixBlock, notiflixSuccess, notiflixError } from '/Gemini-Project/funciones/notiflix.js'
+  import { extraerDatosCV } from '/Gemini-Project/funciones/genAI.js'
+  import { guardarDatosEvaluador, getDuplicados} from '/Gemini-Project/funciones/http_requests.js'
+  import { notiflixBlock, notiflixSuccess, notiflixError, notiflixConfirmDuplicado } from '/Gemini-Project/funciones/notiflix.js'
   import { extractText} from '/Gemini-Project/funciones/extractText.js'
   
   var blob = "";
-  
+
   // ********Evento para cargar un archivo, resumirlo con IA y guardarlo en ld BD ********
-  const btnSubmit = document.getElementById("cargar_cv");
-  btnSubmit.addEventListener("click", async (e) => {
+  const btnCargar = document.getElementById("cargar_cv");
+  btnCargar.addEventListener("click", async (e) => {
     var file = document.getElementById("archivo").files[0];
     var { name } = file;
     var ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
@@ -84,23 +84,20 @@ var cvSRC = [
       var textoCV = await extractText(file, ext);
       // Generar JSON con IA a partir del texto extraido
       var jsonDatosCV = await extraerDatosCV(textoCV);
-      // Remover clase visually-hidden
-      var container = document.querySelector(".visually-hidden");
-      if(container != null){
-        container.classList.remove("visually-hidden");
-      }
-      // Mostrar respuesta en el textarea
-      var text_area_json = document.getElementById("text_area_json");
-      text_area_json.value = jsonDatosCV;
+      // Mostrar formulario para completar los datos
+      mostrarFormulario()
+      // Desbloquear la pantalla
       notiflixBlock("disable",".container");
+      // Completar formulario con los datos extraidos con IA
+      completarFormulario(jsonDatosCV);
     });
   })
 
 
-
-  async function guardarDatos(datosEvaluador){
+  document.getElementById("guardar_datos").addEventListener("click", guardarDatos);
+  async function guardarDatos(){
     var datosEvaluador = {
-      "nombre": document.getElementById("nombre_apellido").value,
+      "nombre": formatearTexto(document.getElementById("nombre_apellido").value),
       "dni": document.getElementById("dni").value,
       "fecha_nacimiento": document.getElementById("fecha_nacimiento").value,
       "correo_electronico": document.getElementById("correo_electronico").value,
@@ -109,18 +106,31 @@ var cvSRC = [
       "perfiles_especialidades": document.getElementById("perfiles_especialidades").value,
       "blob": blob
     }
-    // Guardar datos en la BD
-    var response = await guardarDatosEvaluador(datosEvaluador);
-    if(response.status){
-      notiflixSuccess("Evaluador cargado correctamente");
+
+    // Verificar si el evaluador ya existe en la BD
+    var arrayDuplicados = await getDuplicados(datosEvaluador.nombre);
+    arrayDuplicados = [];
+    if(arrayDuplicados.length > 0){
+      // Mostrar mensaje de advertencia de duplicados
+      confirm = await notiflixConfirmDuplicado(arrayDuplicados);
+      if(confirm){
+        // Guardar datos en la BD si se confirma la advertencia
+        var response = await guardarDatosEvaluador(datosEvaluador);
+        notiflixSuccess(response.message);
+        ocultarFormulario();
+      }
     }else{
-      notiflixError("Error al intentar guardar los datos");
+      // Guardar datos en la BD si no hay duplicados
+      var response = await guardarDatosEvaluador(datosEvaluador);
+      notiflixSuccess(response.message);
+      ocultarFormulario();
     }
+
+    
+
   }
 
-  async function completarFormulario(){
-    var text_area_json = document.getElementById("text_area_json");
-    var json = text_area_json.value;
+  async function completarFormulario(json){
     var obj = JSON.parse(json);
 
     var nombre_apellido = document.getElementById("nombre_apellido");
@@ -131,26 +141,39 @@ var cvSRC = [
     var instituciones_empresas = document.getElementById("instituciones_empresas");
     var perfiles_especialidades = document.getElementById("perfiles_especialidades");
 
-    nombre_apellido.value = obj.nombre_apellido;
+    // Formatear datos del nombre para quitarle los acentos y las comas
+    nombre_apellido.value = formatearTexto(obj.nombre_apellido);
     dni.value = obj.dni;
     fecha_nacimiento.value = obj.fecha_nacimiento;
     correo_electronico.value = obj.correo_electronico;
     ciudad_provincia.value = obj.ciudad_provincia;
     instituciones_empresas.innerHTML = obj.instituciones_empresas;
     perfiles_especialidades.innerHTML = obj.perfiles_especialidades;
+  }
 
-    // Verificar si el nombre ya se encuentra en la base de datos
-    var duplicado = await nombreDuplicado(nombre_apellido.value);
-    if(duplicado){
-      notiflixError("El nombre ya se encuentra en la base de datos");
+  function mostrarFormulario(){
+    // Remover clase visually-hidden
+    var formularioContainer = document.querySelector(".formularioContainer");
+    if(formularioContainer != null){
+      formularioContainer.classList.remove("visually-hidden");
     }
   }
 
-  const btn_completar = document.getElementById("completar_formulario");
-  const btn_guardar = document.getElementById("guardar_datos");
-  
-  btn_completar.addEventListener("click", completarFormulario);
-  btn_guardar.addEventListener("click", guardarDatos);
+  function ocultarFormulario(){
+    // Agregar clase visually-hidden
+    var formularioContainer = document.querySelector(".formularioContainer");
+    if(formularioContainer != null){
+      formularioContainer.classList.add("visually-hidden");
+    }
+  }
+
+  function formatearTexto(texto){
+    // Quitar espacios al principio y al final
+    texto = texto.trim();
+    // Quitar acentos y comas del texto
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/,/g, "");
+  }
+
   
   // ********Recorrer todos los CVs, resumirlos con IA y guardarlos en la BD ********
   // for(const cv in cvSRC){

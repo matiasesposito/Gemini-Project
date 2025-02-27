@@ -85,40 +85,40 @@ async function extraerDatosCV(texto) {
   return respuesta;
 }
 
-async function nombreDuplicado(nombreEvaluador) {
-  var nombresEvaluadores = await getNombresEvaluadores();
-  var arrayNombres = []
-  nombresEvaluadores.map((value) => { arrayNombres.push(value.nombre)});
+// async function nombreDuplicado(nombreEvaluador) {
+//   var nombresEvaluadores = await getNombresEvaluadores();
+//   var arrayNombres = []
+//   nombresEvaluadores.map((value) => { arrayNombres.push(value.nombre)});
 
 
-  const prompt = `Verifica si este nombre ${nombreEvaluador.toLowerCase()} se encuentra en la 
-                  siguiente lista : ${arrayNombres.toString()}. El nombre a verificar puede estar en 
-                  distinto orden. 
-                  Por ejemplo, si el nombre a verificar es "Griselda Alejandra Eimer" y en
-                  la lista se encuentra como "Eimer Grisleda" o "Eimer griselda alejandra" 
-                  deberas darlo como duplicado.
-                  Por el contrario si el nombre a verificar es "Griselda Eimer" y 
-                  en la lista esta "Eimer Daniela" o "Daniela Maria Eimer" debes devolver
-                  que no es duplicado.
-                  Solo debes devolverme el resultado en el siguiente formato.
-                  {
-                    "nombre_duplicado": 
-                  }
-                  `;
-  const result = await model.generateContent(prompt);
-  const response = await result.response;
-  var respuesta = response.text();
+//   const prompt = `Verifica si este nombre ${nombreEvaluador.toLowerCase()} se encuentra en la 
+//                   siguiente lista : ${arrayNombres.toString()}. El nombre a verificar puede estar en 
+//                   distinto orden. 
+//                   Por ejemplo, si el nombre a verificar es "Griselda Alejandra Eimer" y en
+//                   la lista se encuentra como "Eimer Grisleda" o "Eimer griselda alejandra" 
+//                   deberas darlo como duplicado.
+//                   Por el contrario si el nombre a verificar es "Griselda Eimer" y 
+//                   en la lista esta "Eimer Daniela" o "Daniela Maria Eimer" debes devolver
+//                   que no es duplicado.
+//                   Solo debes devolverme el resultado en el siguiente formato.
+//                   {
+//                     "nombre_duplicado": 
+//                   }
+//                   `;
+//   const result = await model.generateContent(prompt);
+//   const response = await result.response;
+//   var respuesta = response.text();
   
-  // Borrar patrones no deseados: ` , 'json' y espacios al principio y final
-  respuesta = respuesta.replace(/`/g, '');
-  respuesta = respuesta.replace(/json/g, '');
-  respuesta = respuesta.trim();
-  // Convertir respuesta a JSON
-  var jsonRes = JSON.parse(respuesta);
-  // Devolver el resultado
-  return jsonRes.nombre_duplicado;
-}
+//   // Borrar patrones no deseados: ` , 'json' y espacios al principio y final
+//   respuesta = respuesta.replace(/`/g, '');
+//   respuesta = respuesta.replace(/json/g, '');
+//   respuesta = respuesta.trim();
+//   // Convertir respuesta a JSON
+//   var jsonRes = JSON.parse(respuesta);
+//   // Devolver el resultado
+//   return jsonRes.nombre_duplicado;
+// }
 
-export { resumirCV, responderIA, extraerDatosCV, nombreDuplicado}
+export { resumirCV, responderIA, extraerDatosCV}
 
 

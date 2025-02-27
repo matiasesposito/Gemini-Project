@@ -3,13 +3,6 @@ body{
   color: #ddd;
 }
 
-textarea#text_area_json{
-  background: #3c4261;
-  color: #ddd;
-  min-height: 250px;
-  resize: none;
-}
-
 span.input-group-text{
   background: #3c4261;
   color: #ddd;
@@ -17,7 +10,6 @@ span.input-group-text{
 
 input.form-control,textarea.form-control{
   margin: 0px 10px;
-
 }
 
 /* width */

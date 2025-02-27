@@ -36,4 +36,13 @@ async function guardarDatosEvaluador(datosEvaluador){
       .then(data => data["array"]); 
   }
 
-export { guardarDatosEvaluador, getResumenEvaluadores, getNombresEvaluadores };
+  async function getDuplicados(nombreCompleto){
+    return fetch('../php/getDuplicados.php', {
+      method: 'POST',
+      body: JSON.stringify({nombreCompleto}),
+    })
+      .then(response => response.json())
+      .then(data => data["arrayDuplicados"]);
+  }
+
+export { guardarDatosEvaluador, getResumenEvaluadores, getNombresEvaluadores, getDuplicados };
