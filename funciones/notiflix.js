@@ -60,19 +60,6 @@ async function notiflixConfirmDuplicado(arrayDuplicados) {
     cssAnimationStyle: 'from-top'
   }
 
-  // Notiflix.Confirm.show(
-  //   'Advertencia de evaluadores duplicados',
-  //    string,
-  //   'Continuar',
-  //   'Cancelar',
-  //   () => {
-  //     return true;
-  //   },
-  //   () => {
-  //     return false;
-  //   },
-  //   options
-  // );
   return new Promise((resolve, reject) => {
     Notiflix.Confirm.show(
       'Advertencia de posibles evaluadores duplicados',

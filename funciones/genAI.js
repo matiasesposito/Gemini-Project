@@ -1,5 +1,4 @@
 import {GoogleGenerativeAI} from "@google/generative-ai";
-import { getNombresEvaluadores} from '/Gemini-Project/funciones/http_requests.js'
 
 const api_key = 'AIzaSyCpCTNhzw8P1wrygLOFpoWh1JS2brQQcUc';
 const genAI = new GoogleGenerativeAI(api_key);
