@@ -51,7 +51,7 @@ async function responderIA(pregunta, fuente) {
 
 
 async function extraerDatosCV(texto) {
-  const prompt = `El siguiente texto corresponde a los datos de un CV.
+  const prompt = `El siguiente texto corresponde a los datos de un CV y necesito que el resultado sea lo mas extenso posible.
                   Necesito que me retornes SOLO los datos que te voy a pasar a continuacion
                   sin ningun caracter especial como comillas \` o *:
                   1. Nombre y Apellido
@@ -62,7 +62,7 @@ async function extraerDatosCV(texto) {
                   6. Instituciones, Universidades o Empresas en las que trabajó, estudio o tuvo algun tipo de participacion.
                   7. Perfil academico, Especialidades, Estudios, Habilidades, Idiomas o Experiencias
                   En caso de no encontrar alguno de estos datos, coloca null en su lugar.
-                  Deberas devolvermelo el siguiente formato:
+                  Deberas devolvermelo en el siguiente formato:
                   {
                     "nombre_apellido": "XXXX",
                     "dni": "NNNNNNNN",
