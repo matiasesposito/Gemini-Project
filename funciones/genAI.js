@@ -9,7 +9,7 @@ const generationConfig = {
   maxOutputTokens: 5000000,
   responseMimeType: "text/plain",
 };
-const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" },generationConfig);
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 async function responderIA(pregunta, fuente) {
   const prompt = `Responde la siguiente pregunta: ${pregunta} 
