@@ -59,10 +59,9 @@ var cvSRC = [
   
   
   
-  import { extraerDatosCV } from '/Gemini-Project/funciones/genAI.js'
+  import { extraerDatosCVPdf } from '/Gemini-Project/funciones/genAI.js'
   import { guardarDatosEvaluador, getDuplicados} from '/Gemini-Project/funciones/http_requests.js'
-  import { notiflixBlock, notiflixSuccess, notiflixError, notiflixConfirmDuplicado } from '/Gemini-Project/funciones/notiflix.js'
-  import { extractText} from '/Gemini-Project/funciones/extractText.js'
+  import { notiflixBlock, notiflixSuccess, notiflixConfirmDuplicado } from '/Gemini-Project/funciones/notiflix.js'
   
   var blob = "";
 
@@ -80,10 +79,8 @@ var cvSRC = [
     reader.addEventListener('load', async function() {
       blob = reader.result;
       notiflixBlock("enable",".container");
-      // Extraer texto del archivo
-      var textoCV = await extractText(file, ext);
       // Generar JSON con IA a partir del texto extraido
-      var jsonDatosCV = await extraerDatosCV(textoCV);
+      var jsonDatosCV = await extraerDatosCVPdf(blob);
       // Mostrar formulario para completar los datos
       mostrarFormulario()
       // Desbloquear la pantalla
@@ -109,7 +106,7 @@ var cvSRC = [
 
     // Verificar si el evaluador ya existe en la BD
     var arrayDuplicados = await getDuplicados(datosEvaluador.nombre);
-    arrayDuplicados = [];
+    //arrayDuplicados = [];
     if(arrayDuplicados.length > 0){
       // Mostrar mensaje de advertencia de duplicados
       confirm = await notiflixConfirmDuplicado(arrayDuplicados);
