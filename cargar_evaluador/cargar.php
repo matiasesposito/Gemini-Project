@@ -36,7 +36,7 @@
     <form id="formFile" enctype="multipart/form-data" method="POST">
       <div class="d-flex flex-row align-items-center justify-center mt-2 pt-4 pb-3">
         <input class="form-control" type="file" name="archivo" id="archivo" accept=".pdf" required>
-        <input class="btn btn-primary" id="cargar_cv" value="Cargar CV">
+        <input class="btn btn-primary" id="cargar_cv" value="Resumir CV">
       </div>
     </form>
   </div>

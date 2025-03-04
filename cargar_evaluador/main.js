@@ -107,21 +107,25 @@ var cvSRC = [
     // Verificar si el evaluador ya existe en la BD
     var arrayDuplicados = await getDuplicados(datosEvaluador.nombre);
     //arrayDuplicados = [];
+    notiflixBlock("enable",".container");
     if(arrayDuplicados.length > 0){
       // Mostrar mensaje de advertencia de duplicados
       confirm = await notiflixConfirmDuplicado(arrayDuplicados);
       if(confirm){
         // Guardar datos en la BD si se confirma la advertencia
         var response = await guardarDatosEvaluador(datosEvaluador);
+        notiflixBlock("disable",".container");
         notiflixSuccess(response.message);
         ocultarFormulario();
       }
     }else{
       // Guardar datos en la BD si no hay duplicados
       var response = await guardarDatosEvaluador(datosEvaluador);
+      notiflixBlock("disable",".container");
       notiflixSuccess(response.message);
       ocultarFormulario();
     }
+    
 
     
 
