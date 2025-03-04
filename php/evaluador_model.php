@@ -26,6 +26,13 @@ class EvaluadorModel
   {
     try {
 
+      // Reemplazar las comillas ' y " por “
+      $instituciones_empresas = str_replace("'", "“", $instituciones_empresas);
+      $instituciones_empresas = str_replace('"', "“", $instituciones_empresas);
+      $perfiles_especialidades = str_replace("'", "“", $perfiles_especialidades);
+      $perfiles_especialidades = str_replace('"', "“", $perfiles_especialidades);
+
+      // Si alguno de los campos está vacío, se reemplaza por NULL
       $nombre == "" ? $nombre = "NULL" : $nombre = "'" . $nombre . "'";
       $dni == "" ? $dni = "NULL" : $dni = "'" . $dni . "'";
       $fecha_nacimiento == "" ? $fecha_nacimiento = "NULL" : $fecha_nacimiento = "'" . $fecha_nacimiento . "'";
@@ -35,9 +42,8 @@ class EvaluadorModel
       $perfiles_especialidades == "" ? $perfiles_especialidades = "NULL" : $perfiles_especialidades = "'" . $perfiles_especialidades . "'";
       $blob == "" ? $blob = "NULL" : $blob = "'" . $blob . "'";
 
-      $sql = "INSERT INTO evaluadores (id, nombre, dni, fecha_nacimiento, correo_electronico, ciudad_provincia, instituciones_empresas, perfiles_especialidades, dataPdf) VALUES 
-                    (DEFAULT, $nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob)";
 
+      $sql = "INSERT INTO evaluadores (id, nombre, dni, fecha_nacimiento, correo_electronico, ciudad_provincia, instituciones_empresas, perfiles_especialidades, dataPdf) VALUES (DEFAULT, $nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob)";
 
       $this->db->sql($sql);
       return 1;
