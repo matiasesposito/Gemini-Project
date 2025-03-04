@@ -68,7 +68,7 @@
         <span class="input-group-text">Perfiles/Especialidades</span>
         <textarea class="form-control" id="perfiles_especialidades" rows="10"></textarea>
       </div>
-      <input class="btn btn-warning mt-3 m-auto" id="guardar_datos" value="Guardar datos">
+      <input class="btn btn-warning mt-3 m-auto" id="guardar_datos" value="Subir datos">
     </div>
   </div>
 

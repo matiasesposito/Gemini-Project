@@ -50,11 +50,17 @@
       <div class="card-wrap">
         <a href="buscar/buscar.php">
           <div class="card-header one">
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <lord-icon
+              src="https://cdn.lordicon.com/kkvxgpti.json"
+              trigger="hover"
+              colors="primary:#efefef,secondary:#08a88a"
+              target=".card-wrap"
+              style="width:90%;height:90%">
+          </lord-icon>
           </div>
           <div class="card-content">
             <h1 class="card-title">Buscar Evaluador</h1>
-            <p class="card-text">Buscar evaluadores por</p>
+            <p class="card-text">Buscar evaluadores por nombre, dni o especialidad</p>
           </div>
         </a>
       </div>
@@ -62,11 +68,17 @@
       <div class="card-wrap">
         <a href="buscar/buscar.php">
           <div class="card-header one">
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <lord-icon
+              src="https://cdn.lordicon.com/kkvxgpti.json"
+              trigger="hover"
+              colors="primary:#efefef,secondary:#08a88a"
+              target=".card-wrap"
+              style="width:90%;height:90%">
+          </lord-icon>
           </div>
           <div class="card-content">
             <h1 class="card-title">Buscar Evaluador</h1>
-            <p class="card-text">Buscar evaluadores por</p>
+            <p class="card-text">Buscar evaluadores por nombre, dni o especialidad</p>
           </div>
         </a>
       </div>
