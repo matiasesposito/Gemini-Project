@@ -45,8 +45,13 @@ class EvaluadorModel
 
       $sql = "INSERT INTO evaluadores (id, nombre, dni, fecha_nacimiento, correo_electronico, ciudad_provincia, instituciones_empresas, perfiles_especialidades, dataPdf) VALUES (DEFAULT, $nombre, $dni, $fecha_nacimiento, $correo_electronico, $ciudad_provincia, $instituciones_empresas, $perfiles_especialidades, $blob)";
 
-      $this->db->sql($sql);
-      return 1;
+      $result = $this->db->sql($sql);
+      
+      if ($result == 1) {
+        return 1;
+      } else {
+        return 0;
+      }
     } catch (Exception $e) {
       return 0;
     }
