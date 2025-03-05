@@ -57,10 +57,10 @@ var cvSRC = [
     { src: "../documentos/Schlotthauer,_Gastón.pdf", type: "pdf" }
   ];
   
-  import { extraerDatosCV } from '/Gemini-Project/funciones/genAI.js'
+  import { generarJson } from '/Gemini-Project/funciones/genAI.js'
   import { guardarDatosEvaluador, getDuplicados} from '/Gemini-Project/funciones/http_requests.js'
   import { notiflixBlock, notiflixSuccess, notiflixConfirmDuplicado } from '/Gemini-Project/funciones/notiflix.js'
-  import { extractText } from '/Gemini-Project/funciones/extractText.js'
+  import { extraerTexto } from '/Gemini-Project/funciones/extractText.js'
 
   var blob = "";
 
@@ -79,9 +79,9 @@ var cvSRC = [
       blob = reader.result;
       notiflixBlock("enable",".container");
       // Extrar texto del archivo
-      var textoCV = await extractText(file, ext);
+      var textoCV = await extraerTexto(file, ext);
       // Generar JSON con IA a partir del texto extraido
-      var jsonDatosCV = await extraerDatosCV(textoCV);
+      var jsonDatosCV = await generarJson(textoCV);
       // Mostrar formulario para completar los datos
       mostrarFormulario()
       // Desbloquear la pantalla

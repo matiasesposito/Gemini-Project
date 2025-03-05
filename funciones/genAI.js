@@ -23,7 +23,7 @@ async function responderIA(pregunta, fuente) {
 }
 
 // Extraer datos de un CV a partir de un texto
-async function extraerDatosCV(texto) {
+async function generarJson(texto) {
   const prompt = `El siguiente texto corresponde a los datos de un CV y necesito que el resultado sea lo mas extenso posible.
                   Necesito que me retornes SOLO los datos que te voy a pasar a continuacion
                   sin ningun caracter especial como comillas \` o *:
@@ -58,7 +58,7 @@ async function extraerDatosCV(texto) {
 }
 
 // Extraer datos de un CV a partir de un archivo PDF
-async function extraerDatosCVPdf(blob) {
+async function generarJsonPdf(blob) {
   // Formatear el blob para quitar el prefijo de data:image/png;base64,
   var base64 = blob.split(",")[1];
 
@@ -104,6 +104,6 @@ async function extraerDatosCVPdf(blob) {
   return respuesta;
 }
 
-export { responderIA, extraerDatosCV, extraerDatosCVPdf}
+export { responderIA, generarJson, generarJsonPdf}
 
 

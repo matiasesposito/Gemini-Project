@@ -1,18 +1,7 @@
 const docToText = new DocToText();
 
-// Función para extraer texto de un archivo
-async function doc_to_text(src, type) {
-  try {
-    return await docToText.extractToText(src, type);
-  } catch (error) {
-    console.error("Error: " + error);
-  }
+async function extraerTexto(src, type){
+  return await docToText.extractToText(src, type);
 }
 
-async function extractText(src, type) {
-  const texto = await doc_to_text(src, type);
-  //console.log(texto.length + "\n" +  texto);
-  return texto;
-}
-
-export { extractText };
+export { extraerTexto };
