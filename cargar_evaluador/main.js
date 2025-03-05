@@ -57,8 +57,6 @@ var cvSRC = [
     { src: "../documentos/Schlotthauer,_Gastón.pdf", type: "pdf" }
   ];
   
-  
-  
   import { extraerDatosCV } from '/Gemini-Project/funciones/genAI.js'
   import { guardarDatosEvaluador, getDuplicados} from '/Gemini-Project/funciones/http_requests.js'
   import { notiflixBlock, notiflixSuccess, notiflixConfirmDuplicado } from '/Gemini-Project/funciones/notiflix.js'
@@ -93,7 +91,6 @@ var cvSRC = [
     });
   })
 
-
   document.getElementById("guardar_datos").addEventListener("click", guardarDatos);
   async function guardarDatos(){
     var datosEvaluador = {
@@ -106,7 +103,6 @@ var cvSRC = [
       "perfiles_especialidades": document.getElementById("perfiles_especialidades").value,
       "blob": blob
     }
-
     // Verificar si el evaluador ya existe en la BD
     var arrayDuplicados = await getDuplicados(datosEvaluador.nombre);
     //arrayDuplicados = [];
@@ -128,10 +124,6 @@ var cvSRC = [
       notiflixSuccess(response.message);
       ocultarFormulario();
     }
-    
-
-    
-
   }
 
   async function completarFormulario(json){
