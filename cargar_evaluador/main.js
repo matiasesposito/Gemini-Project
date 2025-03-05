@@ -59,10 +59,11 @@ var cvSRC = [
   
   
   
-  import { extraerDatosCVPdf } from '/Gemini-Project/funciones/genAI.js'
+  import { extraerDatosCV } from '/Gemini-Project/funciones/genAI.js'
   import { guardarDatosEvaluador, getDuplicados} from '/Gemini-Project/funciones/http_requests.js'
   import { notiflixBlock, notiflixSuccess, notiflixConfirmDuplicado } from '/Gemini-Project/funciones/notiflix.js'
-  
+  import { extractText } from '/Gemini-Project/funciones/extractText.js'
+
   var blob = "";
 
   // ********Evento para cargar un archivo, resumirlo con IA y guardarlo en ld BD ********
@@ -71,7 +72,7 @@ var cvSRC = [
     var file = document.getElementById("archivo").files[0];
     var { name } = file;
     var ext = name.toLowerCase().substring(name.lastIndexOf('.') + 1);
-  
+    
     var reader = new FileReader();
     // Convertir archivo a blob. readASDataURL devuelve un base64
     reader.readAsDataURL(file);
@@ -79,8 +80,10 @@ var cvSRC = [
     reader.addEventListener('load', async function() {
       blob = reader.result;
       notiflixBlock("enable",".container");
+      // Extrar texto del archivo
+      var textoCV = await extractText(file, ext);
       // Generar JSON con IA a partir del texto extraido
-      var jsonDatosCV = await extraerDatosCVPdf(blob);
+      var jsonDatosCV = await extraerDatosCV(textoCV);
       // Mostrar formulario para completar los datos
       mostrarFormulario()
       // Desbloquear la pantalla
